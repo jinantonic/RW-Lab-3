@@ -8,5 +8,6 @@ mouse events instead of the method you originally used (most likely event handle
 - When he inserts a countdown time, the timer starts counting downwards (B)
 - Finishes at 00 (C)
 
+
 # My solution
 </br></br>
