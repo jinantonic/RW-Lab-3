@@ -17,9 +17,7 @@ if (notePads) {
 } // end if
 
 // When the add button is clicked then call the function addNote()
-add_button.addEventListener("click", () => {
-    addNote();
-});
+Rx.Observable.fromEvent(button, 'click').subscribe(() => { addNote(); });
 
 // Function which adds notes
 function addNote(text = "") {
