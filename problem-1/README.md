@@ -4,7 +4,7 @@ mouse events instead of the method you originally used (most likely event handle
 
 </br>
 
-![Sketch](/images/timer.png)
+![Sketch](/images/.png)
 - User is presented with (A) on page load, enters 2m 30s
 - When he inserts a countdown time, the timer starts counting downwards (B)
 - Finishes at 00 (C)
