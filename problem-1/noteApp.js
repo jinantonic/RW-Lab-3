@@ -1,8 +1,8 @@
 // import { Observable } from 'rxjs'; 
-// import { fromEvent } from 'rxjs'; // Import the fromEvent operator
+import { fromEvent } from 'rxjs'; // Import the fromEvent operator
 
 const add_button = document.getElementById('add_note'); // Get the element with the specified id, "add_note"
-// const btnObservable = fromEvent(add_button, 'click'); // Create an observable of button clicks 
+const btnObservable = fromEvent(add_button, 'click'); // Create an observable of button clicks 
 
 // Retrieve the data in the local storage, retrieving "notes" object here
 // It finds the data somewhere and creates the JSON value to put into const variable
@@ -19,10 +19,14 @@ if (notePads) {
     }); 
 } // end if
 
-// When the add button is clicked then call the function addNote()
-Rx.Observable.fromEvent(add_button, 'click').subscribe(() => { 
+// // When the add button is clicked then call the function addNote()
+// Rx.Observable.fromEvent(add_button, 'click').subscribe(() => { 
+//     addNote(); 
+//     console.log('Clicked!');
+// }); 
+
+btnObservable.fromEvent(add_button, 'click').subscribe(() => { 
     addNote(); 
-    console.log('Clicked!');
 }); 
 
 // Function which adds notes
