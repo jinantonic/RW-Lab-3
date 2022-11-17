@@ -1,5 +1,5 @@
 // import { Observable } from 'rxjs'; 
-//import { fromEvent } from 'rxjs'; // Import the fromEvent operator
+// import { fromEvent } from 'rxjs'; // Import the fromEvent operator
 
 const add_button = document.getElementById('add_note'); // Get the element with the specified id, "add_note"
 //const btnObservable = fromEvent(add_button, 'click'); // Create an observable of button clicks 
@@ -22,7 +22,6 @@ if (notePads) {
 // When the add button is clicked then call the function addNote()
 Rx.Observable.fromEvent(add_button, 'click').subscribe(() => { 
     addNote(); 
-    //console.log('Clicked!');
 }); 
 
 // Function which adds notes
@@ -68,7 +67,7 @@ function addNote(text = "") {
         textArea.classList.toggle("hidden");
     });
 
-    // When the delete button is clicked then remove the note and update to local storage
+    // When the delete button is clicked, remove the note and update it to the local storage
     Rx.Observable.fromEvent(del_button, 'click').subscribe(() => {
         note.remove();
         uploadToLS();
@@ -79,6 +78,14 @@ function addNote(text = "") {
         main.innerHTML = marked(value);
         uploadToLS();
     });
+
+    // Rx.Observable.fromEvent(textArea, 'input')
+    //     .map(e => e.target)
+    //     .scan((const { value }, target) => target)
+    //     .subscribe(() => {
+    //         main.innerHTML = marked(value);
+    //         uploadToLS();
+    //     });
 
     document.body.appendChild(note);
 } // end function addNote()
@@ -98,6 +105,7 @@ function uploadToLS() {
 
 // Function which lets the users to choose the background colour for the notes
 function changeColour(event, textId, savedId) {
+// const changeColour = (event, textId, savedId) => {
     var colour = event.value;
     const b = document.getElementById(textId);
     const c = document.getElementById(savedId);
