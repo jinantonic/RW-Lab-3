@@ -58,6 +58,7 @@ function addNote(text = "") {
     const del_button = note.querySelector(".delete");  // Get the first element with class "delete"
     const main = note.querySelector(".main"); // Get the first element with class "main"
     const textArea = note.querySelector("textarea"); // Get the first element with class "textarea"
+    const value = null;
 
     textArea.value = text;
     main.innerHTML = marked(text);
@@ -73,19 +74,18 @@ function addNote(text = "") {
         uploadToLS();
     });
 
-    textArea.addEventListener("input", (e) => {
-        const { value } = e.target;
-        main.innerHTML = marked(value);
-        uploadToLS();
-    });
-
-    // Rx.Observable.fromEvent(textArea, 'input')
-    //     .map(e => e.target)
-    //     .scan((const { value }, target) => target)
-    //     .subscribe(() => {
-    //         main.innerHTML = marked(value);
-    //         uploadToLS();
-    //     });
+    // textArea.addEventListener("input", (e) => {
+    //     const { value } = e.target;
+    //     main.innerHTML = marked(value);
+    //     uploadToLS();
+    // });
+    Rx.Observable.fromEvent(textArea, 'input')
+        .map(e => e.target)
+        .scan((value, target) => target, null)
+        .subscribe(() => {
+            main.innerHTML = marked(value);
+            uploadToLS();
+        });
 
     document.body.appendChild(note);
 } // end function addNote()
@@ -105,7 +105,6 @@ function uploadToLS() {
 
 // Function which lets the users to choose the background colour for the notes
 function changeColour(event, textId, savedId) {
-// const changeColour = (event, textId, savedId) => {
     var colour = event.value;
     const b = document.getElementById(textId);
     const c = document.getElementById(savedId);
