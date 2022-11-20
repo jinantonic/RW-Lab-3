@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <title>Jina's Timer</title>
+        <link rel = "stylesheet" href = "/problem-2/timer.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.4.3/Rx.js"></script>
+
+    </head>
+
+    <body>
+        <div class = "timer_box">
+            <h1>Jina's Timer App</h1>
+            <div class = "timer_display">
+                <div class = "timer_input">
+                    <input type = "number" id = "hr" name = "hr" placeholder = "h" required></input>
+                    <h2 class = "c">:</h2>
+                    <input type = "number" id = "min" name = "min" placeholder = "m" required></input>
+                    <h2 class = "c">:</h2>
+                    <input type = "number" id = "sec" name = "sec" placeholder = "s" required></input>
+                </div>
+
+                <div class = "timer_button">
+                    <button class = "timer_start" id = "timer_start">Start</button>
+                    <button class = "timer_stop" id = "timer_stop">Stop</button>
+                    <button class = "timer_reset" id = "timer_reset">Reset</button>
+                </div>
+            </div>
+        <script src = "/problem-2/timer.js" defer></script>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+}
+
+.timer_box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 60vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer_input {
+    display: flex;
+}
+
+input[type = "number"] {
+    display: block;
+    width: 100px;
+    text-align: center;
+}
+
