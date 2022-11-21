@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box; 
+    font-family: Impact;
     margin: 0;
     padding: 0;
 }
@@ -7,10 +8,16 @@
 .timer_box {
     display: flex;
     flex-direction: column;
+    font-size: 3rem;
     width: 100%;
     min-height: 60vh;
     justify-content: center;
     align-items: center;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 40px;
 }
 
 .timer_input {
@@ -19,7 +26,18 @@
 
 input[type = "number"] {
     display: block;
+    font-size: 3rem;
     width: 100px;
     text-align: center;
+}
+
+.timer_button {
+    display: block;
+}
+
+#timer_start, #timer_stop, #timer_reset{
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px 21px 5px 21px; /* top right bottom left */
 }
 

@@ -7,17 +7,15 @@ let hr = 0;
 let min = 0;
 let sec = 0;
 
-
-
 // Instantiate timer to 0
 let timer = 0;
-let gap;
+let gap; // Time interval
 
 const updateTime = () => {
     hrInput.value = hr;
     minInput.value = min;
     secInput.value = sec;
-}
+} // end updateTime
 
 
 // Update hour when a user changes the minute input
