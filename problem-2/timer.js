@@ -11,7 +11,7 @@ let sec = 0;
 
 // Instantiate timer to 0
 let timer = 0;
-
+let gap;
 
 const updateTime = () => {
     hrInput.value = hr;
@@ -19,9 +19,14 @@ const updateTime = () => {
     secInput.value = sec;
 }
 
+
 // Update hour when a user changes the minute input
 // Hour input can be any int >= 0
-Rx.Observable.fromEvent(hrInput, 'change').subscribe(() => {
+// Rx.Observable.fromEvent(hrInput, 'change').subscribe(() => {
+//     hr = parseInt(hrInput.value);
+//     updateTime();
+// })
+hrInput.addEventListener('change', () => {
     hr = parseInt(hrInput.value);
     updateTime();
 })
@@ -30,7 +35,15 @@ Rx.Observable.fromEvent(hrInput, 'change').subscribe(() => {
 // 1 hour = 60 minutes
 let def = 60;
 
-Rx.Observable.fromEvent(minInput, 'change').subscribe(() => {
+// Rx.Observable.fromEvent(minInput, 'change').subscribe(() => {
+//     min = parseInt(minInput.value);
+//     if (min >= def) { // If user enters an int bigger than 60 for minute
+//         hr = Math.floor(hr + min / def); // Add the number of hours to the hour input
+//         min = min % def; // Set the minute input to the remainder of the minutes
+//     } // end if
+//     updateTime();
+// })
+minInput.addEventListener('change', () => {
     min = parseInt(minInput.value);
     if (min >= def) { // If user enters an int bigger than 60 for minute
         hr = Math.floor(hr + min / def); // Add the number of hours to the hour input
@@ -40,12 +53,25 @@ Rx.Observable.fromEvent(minInput, 'change').subscribe(() => {
 })
 
 // Update second when a user changes the second input
-Rx.Observable.fromEvent(secInput, 'change').subscribe(() => {
+// Rx.Observable.fromEvent(secInput, 'change').subscribe(() => {
+//     sec = parseInt(secInput.value);
+//     if (sec >= def) { // If user enters an int bigger than 60 for second
+//         min = Math.floor(min + sec / def); // Add the number of minutes to the minute input
+//         sec = sec % def; // Set the second input to the remainder of the seconds
+        
+//         if (min >= def) { // If user enters an int bigger than 60 for minute
+//             hr = Math.floor(hr + min / def); // Add the number of hours to the hour input
+//             min = min % def; // Set the minute input to the remainder of the minutes
+//         } // end inner if
+//     } // end if
+//     updateTime();
+// })
+secInput.addEventListener('change', () => {
     sec = parseInt(secInput.value);
     if (sec >= def) { // If user enters an int bigger than 60 for second
         min = Math.floor(min + sec / def); // Add the number of minutes to the minute input
         sec = sec % def; // Set the second input to the remainder of the seconds
-        
+
         if (min >= def) { // If user enters an int bigger than 60 for minute
             hr = Math.floor(hr + min / def); // Add the number of hours to the hour input
             min = min % def; // Set the minute input to the remainder of the minutes
@@ -53,6 +79,15 @@ Rx.Observable.fromEvent(secInput, 'change').subscribe(() => {
     } // end if
     updateTime();
 })
+
+
+const setTime = () => {
+    sec = timer % def; // Remainder of seconds
+    min = Math.floor(timer / def); // Number of minutes
+    hr = Math.floor(min / def);
+    min = min % def; // Remainder of minutes
+    updateTime();
+} // end setTime
 
 const resetTime = () => {
     hr = 0;
@@ -66,6 +101,37 @@ const resetTime = () => {
     hrInput.value = "";
     minInput.value = "";
     secInput.value = "";
-}   
+} // end resetTime
 
+const stopCount = () => {
+    setTimeout(() => {
+        header.innerText = "Time's up!";
+    }, 2000);
+    resetTime();
+} // end stopCount
+
+const startCount = () => {
+    if (timer > 0) {
+        gap = setInterval(() => {
+            timer -= 1; // timer--;
+
+            if (timer <= 0) {
+                clearInterval(gap);
+                stopCount();
+            } // end if
+            setTime();
+        }, 1000);
+    } else {
+        stopCount();
+    } // end if else
+} // end startCount
+
+const startTime = () => {
+    timer = (hr * 3600) + (min * 60) + sec;
+
+    hrInput.setAttribute('disabled', true);
+    minInput.setAttribute('disabled', true);
+    secInput.setAttribute('disabled', true);
+    startCount();
+} // end startTime
 
