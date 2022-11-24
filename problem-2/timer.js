@@ -1,6 +1,7 @@
 const hrInput = document.getElementById('hr');
 const minInput = document.getElementById('min');
 const secInput = document.getElementById('sec');
+const stop = document.getElementById('timer_stop');
 
 // Instantiate hour, minute, and second to 0
 let hr = 0;
@@ -10,6 +11,7 @@ let sec = 0;
 // Instantiate timer to 0
 let timer = 0;
 let gap; // Time interval
+let check = null;
 
 const updateTime = () => {
     hrInput.value = hr;
@@ -132,4 +134,8 @@ const startTime = () => {
     secInput.setAttribute('disabled', true);
     startCount();
 } // end startTime
+
+const stopTime = () => {
+    clearInterval(gap);
+} // end stopTime
 
