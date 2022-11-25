@@ -1,91 +1,79 @@
-const hrInput = document.getElementById('hr');
-const minInput = document.getElementById('min');
-const secInput = document.getElementById('sec');
-const stop = document.getElementById('timer_stop');
+const hrInput = document.getElementById('hr'); // Get the input element with id "hr"
+const minInput = document.getElementById('min'); // Get the input element with id "min"
+const secInput = document.getElementById('sec'); // Get the input element with id "sec"
 
-// Instantiate hour, minute, and second to 0
-let hr = 0;
-let min = 0;
-let sec = 0;
-
-// Instantiate timer to 0
-let timer = 0;
+let hr, min, sec, timer = 0; // Instantiate hour, minute, second and timer to 0
 let gap; // Time interval
-let check = null;
 
-const updateTime = () => {
+const updateTime = () => { // Update the time
     hrInput.value = hr;
     minInput.value = min;
     secInput.value = sec;
 } // end updateTime
 
-
 // Update hour when a user changes the minute input
 // Hour input can be any int >= 0
-// Rx.Observable.fromEvent(hrInput, 'change').subscribe(() => {
-//     hr = parseInt(hrInput.value);
-//     updateTime();
-// })
-hrInput.addEventListener('change', () => {
+Rx.Observable.fromEvent(hrInput, 'change').subscribe(() => {
     hr = parseInt(hrInput.value);
     updateTime();
 })
+// hrInput.addEventListener('change', () => {
+//     hr = parseInt(hrInput.value);
+//     updateTime();
+// })
 
 // Update minute when a user changes the minute input
 // 1 hour = 60 minutes
-let def = 60;
-
-// Rx.Observable.fromEvent(minInput, 'change').subscribe(() => {
-//     min = parseInt(minInput.value);
-//     if (min >= def) { // If user enters an int bigger than 60 for minute
-//         hr = Math.floor(hr + min / def); // Add the number of hours to the hour input
-//         min = min % def; // Set the minute input to the remainder of the minutes
-//     } // end if
-//     updateTime();
-// })
-minInput.addEventListener('change', () => {
+Rx.Observable.fromEvent(minInput, 'change').subscribe(() => {
     min = parseInt(minInput.value);
-    if (min >= def) { // If user enters an int bigger than 60 for minute
-        hr = Math.floor(hr + min / def); // Add the number of hours to the hour input
-        min = min % def; // Set the minute input to the remainder of the minutes
+    if (min >= 60) { // If user enters an int bigger than 60 for minute
+        hr = Math.floor(hr + min / 60); // Add the number of hours to the hour input
+        min = min % 60; // Set the minute input to the remainder of the minutes
     } // end if
     updateTime();
 })
-
-// Update second when a user changes the second input
-// Rx.Observable.fromEvent(secInput, 'change').subscribe(() => {
-//     sec = parseInt(secInput.value);
-//     if (sec >= def) { // If user enters an int bigger than 60 for second
-//         min = Math.floor(min + sec / def); // Add the number of minutes to the minute input
-//         sec = sec % def; // Set the second input to the remainder of the seconds
-        
-//         if (min >= def) { // If user enters an int bigger than 60 for minute
-//             hr = Math.floor(hr + min / def); // Add the number of hours to the hour input
-//             min = min % def; // Set the minute input to the remainder of the minutes
-//         } // end inner if
+// minInput.addEventListener('change', () => {
+//     min = parseInt(minInput.value);
+//     if (min >= 60) { // If user enters an int bigger than 60 for minute
+//         hr = Math.floor(hr + min / 60); // Add the number of hours to the hour input
+//         min = min % 60; // Set the minute input to the remainder of the minutes
 //     } // end if
 //     updateTime();
 // })
-secInput.addEventListener('change', () => {
-    sec = parseInt(secInput.value);
-    if (sec >= def) { // If user enters an int bigger than 60 for second
-        min = Math.floor(min + sec / def); // Add the number of minutes to the minute input
-        sec = sec % def; // Set the second input to the remainder of the seconds
 
+// Update second when a user changes the second input
+Rx.Observable.fromEvent(secInput, 'change').subscribe(() => {
+    sec = parseInt(secInput.value);
+    if (sec >= 60) { // If user enters an int bigger than 60 for second
+        min = Math.floor(min + sec / 60); // Add the number of minutes to the minute input
+        sec = sec % 60; // Set the second input to the remainder of the seconds
+        
         if (min >= def) { // If user enters an int bigger than 60 for minute
-            hr = Math.floor(hr + min / def); // Add the number of hours to the hour input
-            min = min % def; // Set the minute input to the remainder of the minutes
+            hr = Math.floor(hr + min / 60); // Add the number of hours to the hour input
+            min = min % 60; // Set the minute input to the remainder of the minutes
         } // end inner if
     } // end if
     updateTime();
 })
+// secInput.addEventListener('change', () => {
+//     sec = parseInt(secInput.value);
+//     if (sec >= 60) { // If user enters an int bigger than 60 for second
+//         min = Math.floor(min + sec / 60); // Add the number of minutes to the minute input
+//         sec = sec % 60; // Set the second input to the remainder of the seconds
 
+//         if (min >= 60) { // If user enters an int bigger than 60 for minute
+//             hr = Math.floor(hr + min / 60); // Add the number of hours to the hour input
+//             min = min % 60; // Set the minute input to the remainder of the minutes
+//         } // end inner if
+//     } // end if
+//     updateTime();
+// })
 
 const setTime = () => {
-    sec = timer % def; // Remainder of seconds
-    min = Math.floor(timer / def); // Number of minutes
-    hr = Math.floor(min / def);
-    min = min % def; // Remainder of minutes
+    sec = timer % 60; // Remainder of seconds
+    min = Math.floor(timer / 60); // Number of minutes
+    hr = Math.floor(min / 60);
+    min = min % 60; // Remainder of minutes
     updateTime();
 } // end setTime
 
