@@ -78,10 +78,7 @@ const setTime = () => {
 } // end setTime
 
 const resetTime = () => {
-    hr = 0;
-    min = 0;
-    sec = 0;
-    timer = 0;
+    hr, min, sec, timer = 0;
     
     hrInput.removeAttribute('disabled');
     minInput.removeAttribute('disabled');
@@ -106,7 +103,7 @@ const startCount = () => {
             if (timer <= 0) {
                 clearInterval(gap);
                 stopCount();
-            } // end if
+            } // end inner if
             setTime();
         }, 1000);
     } else {
