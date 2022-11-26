@@ -35,15 +35,16 @@ body {
 
 input[type = "number"] {
     display: block;
-    border: 1px solid #3C4048;
+    border: 1px solid #797A7E;
     font-size: 3rem;
+    color: #3C4048;
     width: 100px;
     text-align: center;
     border-radius: 5px;
 }
 
 input[disabled] {
-    background-color: #3C4048;
+    background-color: #797A7E;
     color: #EAEAEA;
 }
 

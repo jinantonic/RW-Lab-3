@@ -12,7 +12,6 @@ const updateTime = () => { // Update the time
 } // end updateTime
 
 // Update hour when a user changes the minute input
-// Hour input can be any int >= 0
 Rx.Observable.fromEvent(hrInput, 'change').subscribe(() => {
     hr = parseInt(hrInput.value); // Set the value of the variable hr to the value of the input element with id "hr"
     updateTime(); // Update the time
@@ -21,7 +20,7 @@ Rx.Observable.fromEvent(hrInput, 'change').subscribe(() => {
 // Update minute when a user changes the minute input
 Rx.Observable.fromEvent(minInput, 'change').subscribe(() => {
     min = parseInt(minInput.value); // Set the value of the variable min to the value of the input element with id "min"
-    if (min >= 60) { // If user enters an int bigger than 60 for minute
+    if (min >= 60) { // If user enters an int bigger or equal to 60 for minute
         hr = Math.floor(hr + min / 60); // Add the number of hours to the hour input
         min = min % 60; // Set the minute input to the remainder of the minutes
     } // end if
@@ -35,7 +34,7 @@ Rx.Observable.fromEvent(secInput, 'change').subscribe(() => {
         min = Math.floor(min + sec / 60); // Add the number of minutes to the minute input
         sec = sec % 60; // Set the second input to the remainder of the seconds
         
-        if (min >= def) { // If user enters an int bigger than 60 for minute
+        if (min > 60) { // If user enters an int bigger than 60 for minute
             hr = Math.floor(hr + min / 60); // Add the number of hours to the hour input
             min = min % 60; // Set the minute input to the remainder of the minutes
         } // end inner if
@@ -62,16 +61,17 @@ const startCount = () => { // Start counting time
                 stopCount(); // Stop the count
             } // end inner if
             setTime(); // Update the time
-        }, 1000);
+        }, 1000)
     } else {
         stopCount(); // Stop the count
     } // end if else
 } // end startCount
 
 const stopCount = () => { // Stop counting time
+    document.querySelector("h1").innerText = "Time's up!";
     setTimeout(() => { // Display "Time's up!" after 1 second
-        document.querySelector("h1").innerText = "Time's up!";
-    }, 1000); 
+        document.querySelector("h1").innerText = "Jina's Timer App";
+    }, 2000); 
     resetTime(); // Reset the time
 } // end stopCount
 
@@ -90,8 +90,9 @@ const stopTime = () => {
 
 const resetTime = () => {
     hr, min, sec, timer = 0; // Reset hour, minute, second and timer to 0
-    if (gap) clearInterval(gap); // If gap is defined, clear the interval
-    
+    if (gap) {
+        clearInterval(gap); // If gap is defined, clear the interval
+    } // end if
     hrInput.removeAttribute('disabled');
     minInput.removeAttribute('disabled');
     secInput.removeAttribute('disabled');
