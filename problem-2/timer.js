@@ -19,9 +19,8 @@ Rx.Observable.fromEvent(hrInput, 'change').subscribe(() => {
 }) 
 
 // Update minute when a user changes the minute input
-// 1 hour = 60 minutes
 Rx.Observable.fromEvent(minInput, 'change').subscribe(() => {
-    min = parseInt(minInput.value);
+    min = parseInt(minInput.value); // Set the value of the variable min to the value of the input element with id "min"
     if (min >= 60) { // If user enters an int bigger than 60 for minute
         hr = Math.floor(hr + min / 60); // Add the number of hours to the hour input
         min = min % 60; // Set the minute input to the remainder of the minutes
@@ -31,7 +30,7 @@ Rx.Observable.fromEvent(minInput, 'change').subscribe(() => {
 
 // Update second when a user changes the second input
 Rx.Observable.fromEvent(secInput, 'change').subscribe(() => {
-    sec = parseInt(secInput.value);
+    sec = parseInt(secInput.value); // Set the value of the variable sec to the value of the input element with id "sec"
     if (sec >= 60) { // If user enters an int bigger than 60 for second
         min = Math.floor(min + sec / 60); // Add the number of minutes to the minute input
         sec = sec % 60; // Set the second input to the remainder of the seconds
@@ -49,22 +48,11 @@ const setTime = () => {
     min = Math.floor(timer / 60); // Number of minutes
     hr = Math.floor(min / 60); // Number of hours
     min = min % 60; // Remainder of minutes
+    
     updateTime();
 } // end setTime
 
-const resetTime = () => {
-    hr, min, sec, timer = 0; // Reset hour, minute, second and timer to 0
-    if (gap) clearInterval(gap); // If gap is defined, clear the interval
-    
-    hrInput.removeAttribute('disabled');
-    minInput.removeAttribute('disabled');
-    secInput.removeAttribute('disabled');
-    hrInput.value = "";
-    minInput.value = "";
-    secInput.value = "";
-} // end resetTime
-
-const startCount = () => {
+const startCount = () => { // Start counting time
     if (timer > 0) { // If timer is greater than 0
         gap = setInterval(() => { 
             timer -= 1; // timer--;
@@ -74,13 +62,13 @@ const startCount = () => {
                 stopCount(); // Stop the count
             } // end inner if
             setTime(); // Update the time
-        }, 1000); 
+        }, 1000);
     } else {
         stopCount(); // Stop the count
     } // end if else
 } // end startCount
 
-const stopCount = () => {
+const stopCount = () => { // Stop counting time
     setTimeout(() => { // Display "Time's up!" after 1 second
         document.querySelector("h1").innerText = "Time's up!";
     }, 1000); 
@@ -100,3 +88,14 @@ const stopTime = () => {
     clearInterval(gap); // Stop the interval
 } // end stopTime
 
+const resetTime = () => {
+    hr, min, sec, timer = 0; // Reset hour, minute, second and timer to 0
+    if (gap) clearInterval(gap); // If gap is defined, clear the interval
+    
+    hrInput.removeAttribute('disabled');
+    minInput.removeAttribute('disabled');
+    secInput.removeAttribute('disabled');
+    hrInput.value = "";
+    minInput.value = "";
+    secInput.value = "";
+} // end resetTime
