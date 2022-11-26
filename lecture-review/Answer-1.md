@@ -12,6 +12,8 @@ Streams are an abstraction used when reading or writing files, or communicating 
 
 Streams implement a design pattern called an **observer pattern**. A subject maintains a list of observers and they get notified whenever there is an update. An **observable** is an object that has a function, in other words, the subject being subscribed to. You can subscribe to an **observable(stream)** and get updates on changes on the observable. For example, in RxJS, we can create an instance of the Observabable and use the method subscribe(observer) which will return the subscription. 
 
+</br>
+
 ![Sketch](/images/obs.png)
 As you can see in the screenshot above, we can create a new Observable type instance(myObservable) and myObservable.subsribe() will return a subscription object. 
 
