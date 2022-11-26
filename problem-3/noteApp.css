@@ -1,0 +1,85 @@
+/* Universal selector which will be apllied to every element */
+* {
+    box-sizing: border-box;
+    font-family: "Copperplate";
+}
+
+body {
+    background-color: beige;
+    display: flex; /* Defining a flex container */
+    flex-wrap: wrap; /* Set flex items to fit onto multiple lines */
+    margin: 50px;
+}
+
+/* Add a New Note button */
+.add_note {
+    background-color: #8C8782;
+    color: white; /* Text colour */
+    border-radius: 5px;
+    border: none;
+    cursor: pointer; /* Cursor works as a pointer */
+    position: fixed;
+    padding: 11px 16px;
+    top: 16px;
+    right: 16px;
+}
+
+/* Top bar of the memo where it has 2 icons and a dropdown menu */
+.note .colour_menu {
+    background-color: #8C8782;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-end; /* Set the flex items to be packed towards the end line */
+    padding: 10px;
+}
+
+/* 2 icons, edit and delete */
+.note .colour_menu button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 8px;
+}
+
+/* The body of the note */
+.note {
+    background-color: #8C8782;
+    border-radius: 7px;
+    border: none;
+    overflow: auto;
+    height: 400px;
+    width: 400px;
+    margin: 10px;
+}
+
+/* The main body of the note after it's getting saved */
+.note .main {
+    background-color: #F0F2D9;
+    border-radius: 7px;
+    border: none;
+    font-size: 19px;
+    position: relative;
+    overflow: auto;
+    height: 350px;
+    width: 95%;
+    margin-left: 10px;
+    padding: 20px;
+}
+
+/* The area for the text input */
+.note textarea {
+    background-color: #F0F2D9;
+    border-radius: 7px;
+    border: none;
+    font-size: 19px;
+    height: 350px;
+    width: 95%;
+    margin-left: 10px;
+    padding: 20px;
+}
+
+.note .hidden {
+    display: none;
+}
