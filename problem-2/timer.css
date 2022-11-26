@@ -36,9 +36,15 @@ body {
 input[type = "number"] {
     display: block;
     border: 1px solid #3C4048;
-    font-size: 4rem;
+    font-size: 3rem;
     width: 100px;
     text-align: center;
+    border-radius: 5px;
+}
+
+input[disabled] {
+    background-color: #3C4048;
+    color: #EAEAEA;
 }
 
 .timer_button {
