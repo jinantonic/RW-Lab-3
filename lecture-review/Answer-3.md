@@ -6,3 +6,5 @@ What is a good practice to alleviate any problems associated with this?
 
 # My solution
 </br></br>
+
+By sharing global state, it becomes hard to know what the functions will return as it is hard to know what the current state oh the input variables are

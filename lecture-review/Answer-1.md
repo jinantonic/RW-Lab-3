@@ -1,7 +1,7 @@
 # Problem 1
 Explain what is meant by the stream abstraction. 
 What is the relationship between streams and the observer pattern? 
-What are streams useful for modeling and when might you use them in Rich Web development?
+What are streams useful for modelling and when might you use them in Rich Web development?
 
 </br>
 
@@ -12,11 +12,9 @@ Streams are an abstraction used when reading or writing files, or communicating 
 
 Streams implement a design pattern called an **observer pattern**. A subject maintains a list of observers and they get notified whenever there is an update. An **observable** is an object that has a function, in other words, the subject being subscribed to. You can subscribe to an **observable(stream)** and get updates on changes on the observable. For example, in RxJS, we can create an instance of the Observabable and use the method subscribe(observer) which will return the subscription. 
 
-</br>
-
 ![Sketch](/images/obs.png)
-As you can see in the screenshot above, we can create a new Observable type instance(myObservable) and use the subscribe method which will return a subscription. 
+As you can see in the screenshot above, we can create a new Observable type instance(myObservable) and myObservable.subsribe() will return a subscription object. 
 
-
+A stream model explains how to reconstruct the underlying signals from individual stream items. Thus, understanding the model is a prerequisite for stream processing and stream mining. In particular, the computational complexity of a data stream problem often depends on the complexity of the model that describes the input.
 
 
