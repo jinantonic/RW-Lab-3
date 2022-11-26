@@ -15,6 +15,5 @@ Streams implement a design pattern called an **observer pattern**. A subject mai
 </br>
 
 ![Sketch](/images/obs.png)
-
-sd
+As you can see in the screenshot above, w
 

@@ -113,3 +113,16 @@ function changeColour(event, textId, savedId) {
     b.style.backgroundColor = colour;
     c.style.backgroundColor = colour;
 } // end function changeColour()
+
+
+import { Observable } from 'rxjs'; // Import the Observable class from the rxjs library
+
+const myObservable = new Observable(subscriber => { // Create a new observable
+    subscriber.next(1); // Emit the value 1
+    subscriber.next(2); // Emit the value 2
+    subscriber.next(3);
+});
+
+myObservable.subscribe((result) => console.log(result)); // Subscribe to the observable and log the result
+
+
