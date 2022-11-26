@@ -7,8 +7,7 @@
         <link rel = "stylesheet" href = "/problem-2/timer.css">
         <script src="https://kit.fontawesome.com/01951b58c6.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.4.3/Rx.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.1.0/rxjs.umd.js"></script>
     </head>
 
     <body>
@@ -16,22 +15,22 @@
             <h1>Jina's Timer App</h1>
             <div class = "timer_display">
                 <div class = "timer_input">
-                    <input type = "number" id = "hr" name = "hr" placeholder = "h" min = "0"></input>
-                    <h2 class = "c">:</h2>
-                    <input type = "number" id = "min" name = "min" placeholder = "m" min = "0"></input>
-                    <h2 class = "c">:</h2>
-                    <input type = "number" id = "sec" name = "sec" placeholder = "s" min = "0"></input>
+                    <input type = "number" id = "hr" name = "hr" min = "0" placeholder = "h"></input>
+                    <h2 class = "c">&nbsp;:&nbsp;</h2> <!-- &nbsp; is added to add space -->
+                    <input type = "number" id = "min" name = "min" min = "0" placeholder = "m"></input>
+                    <h2 class = "c">&nbsp;:&nbsp;</h2>
+                    <input type = "number" id = "sec" name = "sec" min = "0" placeholder = "s"></input>
                 </div>
 
                 <div class = "timer_button">
                     <button class = "timer_start" id = "timer_start" onclick = "startTime()">
-                        <i class="fa-solid fa-play"></i> Start
+                        <i class = "fa-solid fa-play"></i>&nbsp;&nbsp;&nbsp;Start
                     </button>
                     <button class = "timer_stop" id = "timer_stop" onclick = "stopTime()">
-                        <i class="fa-solid fa-pause"></i> Stop
+                        <i class = "fa-solid fa-pause"></i>&nbsp;&nbsp;&nbsp;Stop
                     </button>
                     <button class = "timer_reset" id = "timer_reset" onclick = "resetTime()">
-                        <i class="fa-solid fa-xmark"></i> Reset
+                        <i class = "fa-solid fa-rotate"></i>&nbsp;&nbsp;&nbsp;Reset
                     </button>
                 </div>
             </div>
