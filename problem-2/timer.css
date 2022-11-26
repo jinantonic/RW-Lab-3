@@ -35,7 +35,7 @@ body {
 
 input[type = "number"] {
     display: block;
-    border: 1px solid #797A7E;
+    border: 1px solid #3C4048;
     font-size: 3rem;
     color: #3C4048;
     width: 100px;
@@ -44,7 +44,7 @@ input[type = "number"] {
 }
 
 input[disabled] {
-    background-color: #797A7E;
+    background-color: #3C4048;
     color: #EAEAEA;
 }
 

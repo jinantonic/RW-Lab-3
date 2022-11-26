@@ -68,10 +68,10 @@ const startCount = () => { // Start counting time
 } // end startCount
 
 const stopCount = () => { // Stop counting time
-    document.querySelector("h1").innerText = "Time's up!";
-    setTimeout(() => { // Display "Time's up!" after 1 second
+    document.querySelector("h1").innerText = "Time's up!"; // Change the text of the h1 element to "Time's up!" once counting is done
+    setTimeout(() => { 
         document.querySelector("h1").innerText = "Jina's Timer App";
-    }, 2000); 
+    }, 2000); // Change the text of the h1 element back to "Jina's Timer App" after 2 seconds
     resetTime(); // Reset the time
 } // end stopCount
 
@@ -93,10 +93,10 @@ const resetTime = () => {
     if (gap) {
         clearInterval(gap); // If gap is defined, clear the interval
     } // end if
-    hrInput.removeAttribute('disabled');
-    minInput.removeAttribute('disabled');
-    secInput.removeAttribute('disabled');
-    hrInput.value = "";
-    minInput.value = "";
-    secInput.value = "";
+    hrInput.removeAttribute('disabled'); // Remove the disabled attribute from the hour input
+    minInput.removeAttribute('disabled'); // Remove the disabled attribute from the minute input
+    secInput.removeAttribute('disabled'); // Remove the disabled attribute from the second input
+    hrInput.value = ""; // Set the value of the hour input to an empty string
+    minInput.value = ""; // Set the value of the minute input to an empty string
+    secInput.value = ""; // Set the value of the second input to an empty string
 } // end resetTime
