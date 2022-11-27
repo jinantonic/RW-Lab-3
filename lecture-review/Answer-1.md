@@ -25,9 +25,10 @@ As you can see in the screenshot above, we can create a new Observable type inst
 
 A **reactive stream model** provides modelling synchronous and asynchronous boundaries, handling features following the given principles and getting all benefits of reasoning with APIs. Streams ensure a balance between data flowing from the producer and demand flowing from the user. 
 
+</br>
+
 You can envision a use case as streams of data flowing through channels and being transformed through a set of operators. The use case can be modelled as a series of conversions and the reactive stream would be the modelling abstraction. This model will make a flow of first-class abstraction, by such means separating the operators from the concerns of when data arrives or leaves them. 
 
+</br>
+
 Data can be processed asynchronously while the operators have no clue about this. This will make your model more modular because the operators are separated from the data flow so that both can develop and scale independently within your model. 
-
-
-
