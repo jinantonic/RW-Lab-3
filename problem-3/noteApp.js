@@ -60,7 +60,9 @@ function addNote(text = "") { // If the text is empty then set it to an empty st
     const del_button = note.querySelector(".delete");  // Get the first element with class "delete"
     const main = note.querySelector(".main"); // Get the first element with class "main"
     const textArea = note.querySelector("textarea"); // Get the first element with class "textarea"
+    //const parentNote = document.getElementById('savedId1'); // Get the element with the specified id, "add_note"
     //const value = null;
+    const parentNote = document.getElementById('textId1');
 
     textArea.value = text;
     main.innerHTML = marked(text);
@@ -72,8 +74,38 @@ function addNote(text = "") { // If the text is empty then set it to an empty st
 
     // When the delete button is clicked, remove the note and update it to the local storage
     Rx.Observable.fromEvent(del_button, 'click').subscribe(() => {
-        note.remove();
-        uploadToLS();
+        // note.remove(); // Remove the note
+        // uploadToLS(); // Update the local storage
+        // console.log("Delete button clicked");
+        // if (parentNote) {
+
+        //     for (const i = 1; i < note.num - 1; i++) {
+        //         const childNote = document.getElementById('textId' + i);
+        //         childNote.remove();
+        //     }
+        //     console.log("Parent clicked");
+
+        //     //uploadToLS();   
+        // }
+
+        for (const i = 2; i < note.num - 2; i++) {
+            const childNote = document.getElementById('textId' + i);
+            console.log(childNote);
+        }
+
+        // parentNote.removeChild(childNote);
+        // if (parentNote) {
+        //     parentNote.remove();
+        //     uploadToLS();
+        // } // end if
+        // Rx.Observable.fromEvent(parentNote, 'click').subscribe(() => {
+        //     parentNote.remove(childNote);
+        //     uploadToLS();
+        // });
+
+        
+
+
     });
 
     textArea.addEventListener("input", (e) => {
@@ -90,6 +122,8 @@ function addNote(text = "") { // If the text is empty then set it to an empty st
     //     });
 
     document.body.appendChild(note);
+
+
 } // end function addNote()
 
 // Function which saves the notes to the Local Storage
@@ -111,7 +145,7 @@ function changeColour(event, textId, savedId) {
     const b = document.getElementById(textId);
     const c = document.getElementById(savedId);
 
-    console.log("First line" + b.getItem);
+    //console.log("First line" + b.getItem);
     b.style.backgroundColor = colour;
     c.style.backgroundColor = colour;
 } // end function changeColour()
