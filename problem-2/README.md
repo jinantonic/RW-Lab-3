@@ -5,7 +5,7 @@ is just to get an idea of UI)
 
 </br>
 
-![Sketch](/images/timer.png)
+![Sketch](/images/t1.png)
 - User is presented with (A) on page load, enters 2m 30s
 - When he inserts a countdown time, the timer starts counting downwards (B)
 - Finishes at 00 (C)
@@ -13,5 +13,5 @@ is just to get an idea of UI)
 </br>
 
 # My solution
-![Sketch](/images/timer.png)
+![Sketch](/images/t2.png)
 This is the overall look of the timer application.
