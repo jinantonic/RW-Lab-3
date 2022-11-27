@@ -88,7 +88,7 @@ function addNote(text = "") { // If the text is empty then set it to an empty st
         //     //uploadToLS();   
         // }
 
-        for (const i = 2; i < note.num - 2; i++) {
+        for (var i = 2; i < num + 1; i++) {
             const childNote = document.getElementById('textId' + i);
             console.log(childNote);
         }
