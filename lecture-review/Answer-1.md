@@ -15,12 +15,11 @@ Streams implement a design pattern called an **observer pattern**. A subject mai
 </br>
 
 ![Sketch](/images/obs.png)
-As you can see in the screenshot above, we can create a new Observable type instance(myObservable) and myObservable.subsribe() will return a subscription object. 
+As you can see in the screenshot above, we can create a new Observable type instance (myObservable) and myObservable.subscribe() will return a subscription object. 
 
 </br>
 
-The reactive stream model provides modelling synchronous and asynchronous boundaries, handlling features following the given principles and getting all benefits of reasoning with APIs. Streams ensures a balance between data flowing from the producer and demand flowing from the user. You can visualise a use case as streams of data flowing through channels and being transformed through a set of operators. The use case can be modeled as a series of transformations and the reactive stream would be the abstraction of modelling. This model will make a flow of first-class abstraction, thereby decoupling the operators from the concerns of when data arrives or leaves them. Data can be processed asynchronously, and the operators have no clue about this fact. This makes your model more modular because you’ve now decoupled the operators from the data flow, and both can evolve and scale independently within your model. 
+A **reactive stream model** provides modelling synchronous and asynchronous boundaries, handling features following the given principles and getting all benefits of reasoning with APIs. Streams ensure a balance between data flowing from the producer and demand flowing from the user. You can envision a use case as streams of data flowing through channels and being transformed through a set of operators. The use case can be modelled as a series of conversions and the reactive stream would be the  modelling abstraction. This model will make a flow of first-class abstraction, by such means separating the operators from the concerns of when data arrives or leaves them. Data can be processed asynchronously while the operators have no clue about this. This will makes your model more modular because the operators are decoupled from the data flow, so that both can develop and scale independently within your model. 
 
-A stream model explains how to reconstruct the underlying signals from individual stream items. Thus, understanding the model is a prerequisite for stream processing and stream mining. In particular, the computational complexity of a data stream problem often depends on the complexity of the model that describes the input.
 
 
