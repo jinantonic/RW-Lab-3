@@ -115,3 +115,23 @@ function changeColour(event, textId, savedId) {
 
 
 
+class Note {
+    constructor(text, colour) {
+        this.text = text; // text of the note
+        this.colour = colour; // colour of the note
+    } // end constructor
+
+    // Function which returns the text of the note
+    getText() {
+        return this.text;
+    } // end function getText()
+
+    // Function which returns the colour of the note
+    getColour() {
+        return this.colour;
+    } // end function getColour()
+} // end class Note
+
+class NoteApp {
+    
+}
