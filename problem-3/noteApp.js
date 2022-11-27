@@ -82,7 +82,7 @@ function addNote(text = "") { // If the text is empty then set it to an empty st
         // if (parentNote) {
 
         const parentNote = document.getElementById('textId1');
-        //console.log(parentNote);
+        console.log(parentNote);
         
         // for (let i = 2; i < num + 1; i++) {
         //     const childNote = document.getElementById('textId' + i);
