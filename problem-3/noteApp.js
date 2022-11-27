@@ -62,7 +62,9 @@ function addNote(text = "") { // If the text is empty then set it to an empty st
     const textArea = note.querySelector("textarea"); // Get the first element with class "textarea"
     //const parentNote = document.getElementById('savedId1'); // Get the element with the specified id, "add_note"
     //const value = null;
-
+    
+    // const eh = document.getElementsByClassName(".notes");
+    // console.log(eh);
 
     textArea.value = text;
     main.innerHTML = marked(text);
@@ -82,16 +84,17 @@ function addNote(text = "") { // If the text is empty then set it to an empty st
         const parentNote = document.getElementById('textId1');
         //console.log(parentNote);
         
-        for (let i = 2; i < num + 1; i++) {
-            const childNote = document.getElementById('textId' + i);
-            //console.log(childNote);
-        }
+        // for (let i = 2; i < num + 1; i++) {
+        //     const childNote = document.getElementById('textId' + i);
+        //     console.log(childNote);
 
-        if (parentNote) {
-            console.log("Parent clicked");
-            
+        //     // if () {
+        //     //     console.log("Parent clicked");
 
-        }
+        //     // }
+        // }
+
+      
         
         //uploadToLS();   
 
