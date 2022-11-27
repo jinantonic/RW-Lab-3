@@ -185,4 +185,3 @@ function changeColour(event, textId, savedId) {
     c.style.backgroundColor = colour;
 } // end function changeColour()
 
-
