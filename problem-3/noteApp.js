@@ -62,8 +62,7 @@ function addNote(text = "") { // If the text is empty then set it to an empty st
     const textArea = note.querySelector("textarea"); // Get the first element with class "textarea"
     //const parentNote = document.getElementById('savedId1'); // Get the element with the specified id, "add_note"
     //const value = null;
-    
-   
+
 
     textArea.value = text;
     main.innerHTML = marked(text);
@@ -80,18 +79,25 @@ function addNote(text = "") { // If the text is empty then set it to an empty st
         // console.log("Delete button clicked");
         // if (parentNote) {
 
-        //     for (const i = 1; i < note.num - 1; i++) {
-        //         const childNote = document.getElementById('textId' + i);
-        //         childNote.remove();
-        //     }
-        //     console.log("Parent clicked");
-
-        //     //uploadToLS();   
-        // }
-        
-        
-        //const parentNote = document.getElementById('textId1');
+        const parentNote = document.getElementById('textId1');
         //console.log(parentNote);
+        
+        for (let i = 2; i < num + 1; i++) {
+            const childNote = document.getElementById('textId' + i);
+            //console.log(childNote);
+        }
+
+        if (parentNote) {
+            console.log("Parent clicked");
+            
+
+        }
+        
+        //uploadToLS();   
+
+        
+        
+
         // if (parentNote != null) {
         //     console.log("Parent clicked");
         // }
@@ -100,21 +106,21 @@ function addNote(text = "") { // If the text is empty then set it to an empty st
         //     console.log("Parent clicked");
         // });
 
-        for (let i = 2; i < num + 1; i++) {
-            const childNote = document.getElementById('savedId' + i);
-            //console.log(childNote);
+        // for (let i = 2; i < num + 1; i++) {
+        //     const childNote = document.getElementById('savedId' + i);
+        //     //console.log(childNote);
                     
-            if (parentNote.contains(childNote)) {
-                console.log("Parent clicked");
-            }   
-            //note.remove(childNote);
-            //childNote.remove();
-            // if (childNote) {
-            //     console.log("child clicked");
-            // }
+        //     if (parentNote.contains(childNote)) {
+        //         console.log("Parent clicked");
+        //     }   
+        //     //note.remove(childNote);
+        //     //childNote.remove();
+        //     // if (childNote) {
+        //     //     console.log("child clicked");
+        //     // }
 
-            uploadToLS();
-        }
+        //     uploadToLS();
+        // }
 
 
 
