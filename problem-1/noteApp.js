@@ -74,33 +74,13 @@ function addNote(text = "") {
         uploadToLS();
     });
 
-    // textArea.addEventListener("input", (e) => {
-    //     const { value } = e.target;
-    //     main.innerHTML = marked(value);
-    //     uploadToLS();
-    // });
-
-    const e = Rx.Observable.fromEvent(textArea, 'input', true);
-    e.subscribe((function() {
-        const { value } = e.target;
-        main.innerHTML = marked(value);
-        uploadToLS();
-    }));
-
-
-
-
-
-    // Rx.Observable.fromEvent(textArea, 'input')
-    //     .map(value => e.target)
-    //     .scan((value, target) => target, null)
-    //     .subscribe(() => {
-    //         main.innerHTML = marked(value);
-    //         uploadToLS();
-    //     });
-
-
-
+    Rx.Observable.fromEvent(textArea, 'input')
+    .map(() => textArea.value)
+    .subscribe(() => {
+      main.innerHTML = marked(textArea.value);
+      this.uploadToLS();
+    });
+    
     document.body.appendChild(note);
 } // end function addNote()
 

@@ -1,8 +1,4 @@
-// import { Observable } from 'rxjs'; 
-// import { fromEvent } from 'rxjs'; // Import the fromEvent operator
-
 const add_button = document.getElementById('add_note'); // Get the element with the specified id, "add_note"
-//const btnObservable = fromEvent(add_button, 'click'); // Create an observable of button clicks 
 
 // Retrieve the data in the local storage, retrieving "notes" object here
 // It finds the data somewhere and creates the JSON value to put into const variable
@@ -10,6 +6,8 @@ const notePads = JSON.parse(localStorage.getItem("notes"));
 const textIdentifier = "textId"; // The normal note 
 const savedIdentifier = "savedId"; // For when the note is saved
 var num = 0;
+
+
 
 // Checks to see if this variable actually contains data
 // If it does then it goes through a for loop where it will for every note and add it to whatever it's being added to
@@ -60,11 +58,6 @@ function addNote(text = "") { // If the text is empty then set it to an empty st
     const del_button = note.querySelector(".delete");  // Get the first element with class "delete"
     const main = note.querySelector(".main"); // Get the first element with class "main"
     const textArea = note.querySelector("textarea"); // Get the first element with class "textarea"
-    //const parentNote = document.getElementById('savedId1'); // Get the element with the specified id, "add_note"
-    //const value = null;
-    
-    // const eh = document.getElementsByClassName(".notes");
-    // console.log(eh);
 
     textArea.value = text;
     main.innerHTML = marked(text);
@@ -76,71 +69,8 @@ function addNote(text = "") { // If the text is empty then set it to an empty st
 
     // When the delete button is clicked, remove the note and update it to the local storage
     Rx.Observable.fromEvent(del_button, 'click').subscribe(() => {
-        // note.remove(); // Remove the note
-        // uploadToLS(); // Update the local storage
-        // console.log("Delete button clicked");
-        // if (parentNote) {
-
-        const parentNote = document.getElementById('textId1');
-        console.log(parentNote);
-        
-        // for (let i = 2; i < num + 1; i++) {
-        //     const childNote = document.getElementById('textId' + i);
-        //     console.log(childNote);
-
-        //     // if () {
-        //     //     console.log("Parent clicked");
-
-        //     // }
-        // }
-
-      
-        
-        //uploadToLS();   
-
-        
-        
-
-        // if (parentNote != null) {
-        //     console.log("Parent clicked");
-        // }
-
-        // Rx.Observable.fromEvent(parentNote, 'click').subscribe(() => {
-        //     console.log("Parent clicked");
-        // });
-
-        // for (let i = 2; i < num + 1; i++) {
-        //     const childNote = document.getElementById('savedId' + i);
-        //     //console.log(childNote);
-                    
-        //     if (parentNote.contains(childNote)) {
-        //         console.log("Parent clicked");
-        //     }   
-        //     //note.remove(childNote);
-        //     //childNote.remove();
-        //     // if (childNote) {
-        //     //     console.log("child clicked");
-        //     // }
-
-        //     uploadToLS();
-        // }
-
-
-
-
-        // parentNote.removeChild(childNote);
-        // if (parentNote) {
-        //     parentNote.remove();
-        //     uploadToLS();
-        // } // end if
-        // Rx.Observable.fromEvent(parentNote, 'click').subscribe(() => {
-        //     parentNote.remove(childNote);
-        //     uploadToLS();
-        // });
-
-        
-
-
+        note.remove(); // Remove the note
+        uploadToLS(); // Update the local storage
     });
 
     textArea.addEventListener("input", (e) => {
@@ -157,8 +87,6 @@ function addNote(text = "") { // If the text is empty then set it to an empty st
     //     });
 
     document.body.appendChild(note);
-
-
 } // end function addNote()
 
 // Function which saves the notes to the Local Storage
@@ -184,4 +112,6 @@ function changeColour(event, textId, savedId) {
     b.style.backgroundColor = colour;
     c.style.backgroundColor = colour;
 } // end function changeColour()
+
+
 

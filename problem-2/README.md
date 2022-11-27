@@ -15,3 +15,7 @@ is just to get an idea of UI)
 # My solution
 ![Sketch](/images/t2.png)
 This is the overall look of the timer application.
+
+
+![Sketch](/images/t3.png)
+If a user wants to set a timer for an hour, just simply enter 1 and click the empty space outside of the timer. Then it will automatically fill up the minute and second input as 0s so that they won't need to enter 0s manually.
