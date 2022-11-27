@@ -17,10 +17,10 @@ class NoteApp {
     } // end constructor
 
     addNewNote(text, addToLS, id, parentId) {
-        const note = new Note(text, "white"); // Create a new note
+        const note = new Note(text, "white", id, parentId); // Create a new note
         note.div.classList.add("note");
         this.NoteList[id] = note; // Add the note to the list of notes
-
+        console.log(note.id);
 
         note.div.innerHTML = `
             <div class="tools">
@@ -48,9 +48,10 @@ class NoteApp {
 
         // When the delete button is clicked, remove the note and update it to the local storage
         Rx.Observable.fromEvent(del_button, 'click').subscribe(() => {
+            //note.div.remove();
             this.NoteList.forEach((n) => {
                 if (note.id === n.parentId) {
-                    note.div.remove();
+                    n.div.remove();
                 }
             });
             this.uploadToLS(); // Update the local storage
