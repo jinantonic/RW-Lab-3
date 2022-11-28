@@ -17,4 +17,5 @@ In the scenario of the user choosing the green background colour, the first imag
 
 </br></br>
 
-
+![Sketch](/images/n4.png)
+This is the whole screenshot of my memo application. The default font is set as 'Copperplate' for the design, but it can be modified since Copperplate only displays the upper case alphabets.
