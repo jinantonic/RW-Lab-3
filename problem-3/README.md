@@ -11,6 +11,12 @@ This is the overall look of the timer application and extra features are added. 
 
 </br>
 
-Enter 70 mins           |  Convert to right format
+Default background           |  Changed background
 :----------------------:|:-------------------------:
 ![Sketch](/images/m2.png)|![Sketch](/images/m3.png)
+
+</br>
+
+Default background           |  Changed background
+:----------------------:|:-------------------------:
+![Sketch](/images/m4.png)|![Sketch](/images/m5.png)
