@@ -18,7 +18,7 @@ class NoteApp {
     } // end constructor
 
     addNewNote(text, colour, addToLS, id, parentId) {
-        const note = new Note(text, colour, true, id, parentId); // Create a new note
+        const note = new Note(text, colour, id, parentId); // Create a new note
         note.div.classList.add("note");
         this.NoteList[id] = note; // Add the note to the list of notes
 
