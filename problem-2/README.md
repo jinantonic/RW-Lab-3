@@ -1,6 +1,6 @@
 # Problem 2
-Implement a count down timer similar using RxJs. The UI would look something like the
-following (taken from timer-tab.com – you can ignore the colours etc from image – this
+Implement a count down timer similar using RxJs. 
+The UI would look something like the following (taken from timer-tab.com – you can ignore the colours etc from image – this
 is just to get an idea of UI)
 
 </br>
@@ -31,3 +31,7 @@ The same rule applies to the minute or second as well. 30 minutes timer, simply 
 ![Sketch](/images/t5.png)
 Also, each time input boxes have up and down arrows so that you can increment / decrement the time and the minimum value would be 0 since it wouldn't make sense to have a negative value for the time.
 
+</br>
+
+:----------------------:|:-------------------------:
+![Sketch](/images/t6.png)|![Sketch](/images/t7.png)
