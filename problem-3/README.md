@@ -8,3 +8,9 @@ Use a parent property in a note class to manage related notes, which is null for
 ![Sketch](/images/m1.png)
 
 This is the overall look of the timer application and extra features are added. As you can see in the image above, the background colour dropdown menu is replaced with a colour input palette. In addition to that, a new button shaped like a child is created which will create children notes which are identical to the parent.
+
+</br>
+
+Enter 70 mins           |  Convert to right format
+:----------------------:|:-------------------------:
+![Sketch](/images/m2.png)|![Sketch](/images/m3.png)
