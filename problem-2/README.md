@@ -36,3 +36,22 @@ Also, each time input boxes have up and down arrows so that you can increment / 
 Enters 70 mins           |  Converts to right format
 :----------------------:|:-------------------------:
 ![Sketch](/images/t6.png)|![Sketch](/images/t7.png)
+When the user enters second and minute inputs greater than 60, it will automatically convert them into the right format. For example, from 70 mins to 1 hour and 10 mins. 
+
+</br>
+
+Enters 70 mins           |  Converts to right format
+:----------------------:|:-------------------------:
+![Sketch](/images/t8.png)|![Sketch](/images/t9.png)
+
+</br>
+
+Enters 70 mins           |  Converts to right format
+:----------------------:|:-------------------------:
+![Sketch](/images/t10.png)|![Sketch](/images/t11.png)
+
+When the user inserts a certain time, 
+User is presented with (A) on page load, enters 2m 30s
+- When he inserts a countdown time, the timer starts counting downwards (B)
+- Finishes at 00 (C)
+
