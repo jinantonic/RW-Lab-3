@@ -30,4 +30,23 @@ Reference: http://reactivex.io/rxjs/manual/overview.html#subscription
 </br>
 
 ![Sketch](/images/c1.png)
+Original code for adding new notes when the add note button is clicked by using EventTarget.addEventListener() function.
+
 ![Sketch](/images/c2.png)
+RxJS code for adding new notes when the add note button is clicked by using Rx.Observable.fromEvent().subscribe() function.
+
+</br>
+
+![Sketch](/images/c3.png)
+Original code for editing / deleting notes when edit / delete button is clicked by using EventTarget.addEventListener() function.
+
+![Sketch](/images/c4.png)
+RxJS code for editing / deleting notes when edit / delete button is clicked by using Rx.Observable.fromEvent().subscribe() function.
+
+</br>
+
+![Sketch](/images/c5.png)
+Original code for editing / deleting notes when edit / delete button is clicked by using EventTarget.addEventListener() function.
+
+![Sketch](/images/c6.png)
+RxJS code for editing / deleting notes when edit / delete button is clicked by using Rx.Observable.fromEvent().subscribe() function.
