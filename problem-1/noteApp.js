@@ -67,7 +67,8 @@ function addNote(text = "") {
         uploadToLS(); // Upload the notes to the local storage
     });
 
-    Rx.Observable.fromEvent(textArea, 'input') // When the text area is changed
+    // When the text area is changed
+    Rx.Observable.fromEvent(textArea, 'input') 
         .map(() => textArea.value) // Map the value of the text area
         .subscribe(() => { // Subscribe to the value
             main.innerHTML = marked(textArea.value); // Set the value of the main to the text area
