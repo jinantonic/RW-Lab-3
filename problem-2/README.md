@@ -39,7 +39,7 @@ Enter 70 mins           |  Convert to right format
 
 When the user enters second and minute inputs greater than 60, it will automatically convert them into the right format. For example, from 70 mins to 1 hour and 10 mins. 
 
-</br></br>
+</br>
 
 Enter time         |  Start the timer
 :----------------------:|:-------------------------:
@@ -47,7 +47,7 @@ Enter time         |  Start the timer
 
 Let's say the user wants to set a 2m 30s timer and click the start button.
 
-</br></br>
+</br>
 
 Stop the timer          |  Reset the timer
 :----------------------:|:-------------------------:
@@ -55,7 +55,7 @@ Stop the timer          |  Reset the timer
 
 Once the ticking starts, I changed the background colour of the input boxes so that it will be handy to see if the timer is still counting down or not. The user can click stop button to stop the timer or reset to erase the input contents. Once it gets reset, the timer is ready to accept new time inputs.
 
-</br></br>
+</br>
 
 Time's up header   |  Original header
 :----------------------:|:-------------------------:
