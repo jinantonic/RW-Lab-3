@@ -5,6 +5,7 @@ mouse events instead of the method you originally used (most likely event handle
 </br>
 
 # My solution
+## Design Aspect
 ![Sketch](/images/n1.png)
 The overall look is identical to my previous note application since the given task only requires converting plain JavaScript to RxJS streams to handle the mouse events. A user can add, edit, delete notes and change the background colour. Each memo has a top bar which has a dropdown menu for colour choice, edit / save and delete buttons at the right top corner. The user can select the background colour or use the default beige colour without changing it.
 
@@ -19,3 +20,11 @@ In the scenario of the user choosing the green background colour, the first imag
 
 ![Sketch](/images/n4.png)
 This is the whole screenshot of my memo application. The default font is set as 'Copperplate' for the design, but it can be modified since Copperplate only displays the upper case alphabets.
+
+</br></br>
+
+## Code Comparison
+Reference: http://reactivex.io/rxjs/manual/overview.html#subscription
+
+</br>
+
