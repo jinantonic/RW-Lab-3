@@ -99,5 +99,3 @@ function changeColour(event, textId, savedId) {
     b.style.backgroundColor = colour; // Set the background colour of the text area to the colour
     c.style.backgroundColor = colour; // Set the background colour of the main to the colour
 } // end function changeColour()
-
-
