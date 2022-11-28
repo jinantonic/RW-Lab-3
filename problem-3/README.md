@@ -7,7 +7,7 @@ Use a parent property in a note class to manage related notes, which is null for
 
 ![Sketch](/images/m1.png)
 
-This is the overall look of the timer application and extra features are added. As you can see in the image above, the background colour dropdown menu is replaced with a colour input palette. In addition to that, a new button shaped like a child is created which will create children notes which are identical to the parent.
+This is the overall look of the timer application and extra features are added. As you can see in the image above, the background colour dropdown menu is replaced with a colour input palette. In addition to that, a new button shaped like a child is created which will create children notes.
 
 </br>
 
@@ -20,3 +20,8 @@ Default background           |  Changed background
 While editing          |  After saved
 :----------------------:|:-------------------------:
 ![Sketch](/images/m4.png)|![Sketch](/images/m5.png)
+
+</br></br>
+
+![Sketch](/images/m6.png)
+Once the child button is clicked, it creates a new child note which is identical to the parent note. It is possible to edit, delete and change the background of each note separately, however, all of the child notes will be deleted if the parent note is removed. 
