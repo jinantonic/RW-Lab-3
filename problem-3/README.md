@@ -17,6 +17,6 @@ Default background           |  Changed background
 
 </br></br>
 
-While editing          |  Finished editing
+While editing          |  After saved
 :----------------------:|:-------------------------:
 ![Sketch](/images/m4.png)|![Sketch](/images/m5.png)
