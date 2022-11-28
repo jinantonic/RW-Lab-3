@@ -8,6 +8,7 @@ class NoteApp {
             this.notes.forEach((note) => this.addNewNote(
                 note, // text
                 true // add to the local storage
+
             )); // end forEach
         } // end if
 
@@ -16,20 +17,23 @@ class NoteApp {
         .subscribe(() => this.addNewNote("", true, this.id++, 0)); 
     } // end constructor
 
-    addNewNote(text, addToLS, id, parentId) {
-        const note = new Note(text, "white", id, parentId); // Create a new note
+    addNewNote(text, colour, addToLS, id, parentId) {
+        const note = new Note(text, colour, true, id, parentId); // Create a new note
         note.div.classList.add("note");
         this.NoteList[id] = note; // Add the note to the list of notes
-        console.log(note.id);
 
         note.div.innerHTML = `
-            <div class="tools">
-                <button class="edit"><i class="fas fa-edit"></i></button>
-                <button class="delete"><i class="fas fa-trash-alt"></i></button>
-                <button class="link"><i class="f"></i></button>
+            <div class="notes">
+                <div class="colour_menu">
+                    <input type="color" id="newColour">
+                    <button class="changeColour"><i class="fas fa-trash-alt"></i></button>
+                    <button class="edit"><i class="fas fa-edit"></i></button>
+                    <button class="delete"><i class="fas fa-trash-alt"></i></button>
+                    <button class="link"><i class="fas fa-edit"></i></button>
+                </div>
+                <div class="main hidden"></div>
+                <textarea></textarea>
             </div>
-            <div class="main hidden"></div>
-            <textarea></textarea>
         `;
 
         const edit_button = note.div.querySelector(".edit");
@@ -37,6 +41,7 @@ class NoteApp {
         const main = note.div.querySelector(".main");
         const textArea = note.div.querySelector("textarea");
         const link = note.div.querySelector(".link");
+        const colourSelector = note.div.querySelector("#newColour");
 
         textArea.value = text;
         main.innerHTML = marked(text);
@@ -48,22 +53,28 @@ class NoteApp {
 
         // When the delete button is clicked, remove the note and update it to the local storage
         Rx.Observable.fromEvent(del_button, 'click').subscribe(() => {
-            //note.div.remove();
             this.NoteList.forEach((n) => {
                 if (note.id === n.parentId) {
                     n.div.remove();
                 }
             });
+            note.div.remove(); // Delete all the children note including the parent note
             this.uploadToLS(); // Update the local storage
         });
 
         Rx.Observable.fromEvent(link, 'click').subscribe(() => {
-            const childId = this.id + 1;
-            const newNote = new Note(textArea.value, "white", childId, this.id);
+            const newNote = new Note(textArea.value, note.colour, this.id++, note.id);
             newNote.addChild();
             this.uploadToLS();
         });
 
+        Rx.Observable.fromEvent(colourSelector, 'change').subscribe(() => {
+            textArea.style.backgroundColor = colourSelector.value;
+            main.style.backgroundColor = colourSelector.value;
+            note.colour = colourSelector.value;
+        });
+
+        
         Rx.Observable.fromEvent(textArea, 'input')
             .map(() => textArea.value)
             .subscribe(() => {
@@ -74,6 +85,8 @@ class NoteApp {
         document.body.appendChild(note.div);
 
         if (addToLS) {
+            textArea.style.backgroundColor = colour;
+            main.style.backgroundColor = colour;
             this.uploadToLS();
         } // end if
     } // end function addNewNote()
@@ -103,8 +116,8 @@ class Note {
     } // end constructor
 
     addChild() {
-        //this.div.appendChild(child);
-        n.addNewNote(this.text, true, this.id, this.parentId);
+        n.addNewNote(this.text, this.colour, true, this.id, this.parentId);
+        this.div.backgroundColor
     }
 
     // Function which returns the text of the note
