@@ -44,7 +44,8 @@ When the user enters second and minute inputs greater than 60, it will automatic
 Enter time         |  Start the timer
 :----------------------:|:-------------------------:
 ![Sketch](/images/t8.png)|![Sketch](/images/t9.png)
-Let's say the user wants to set a 2m 30s timer.
+
+Let's say the user wants to set a 2m 30s timer and click the start button.
 
 </br></br>
 
@@ -52,8 +53,12 @@ Stop the timer          |  Reset the timer
 :----------------------:|:-------------------------:
 ![Sketch](/images/t10.png)|![Sketch](/images/t11.png)
 
-When the user inserts a certain time, 
-User is presented with (A) on page load, enters 2m 30s
-- When he inserts a countdown time, the timer starts counting downwards (B)
-- Finishes at 00 (C)
+Once the ticking starts, I changed the background colour of the input boxes so that it will be handy to see if the timer is still counting down or not. The user can click stop button to stop the timer or reset to erase the input contents. Once it gets reset, the timer is ready to accept new time inputs.
 
+</br></br>
+
+Time's up header   |  Original header
+:----------------------:|:-------------------------:
+![Sketch](/images/t12.png)|![Sketch](/images/t13.png)
+
+The timer will finishes at 00 and will display the message saying time's up at the header. After 2 seconds, it will change the text of h1 element back to original.
