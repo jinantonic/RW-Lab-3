@@ -35,4 +35,4 @@ Also, each time input boxes have up and down arrows so that you can increment / 
 
 Enters 70 mins           |  Converts to right format
 :----------------------:|:-------------------------:
-![Sketch](/images/n2.png)|![Sketch](/images/n3.png)
+![Sketch](/images/t6.png)|![Sketch](/images/t7.png)
