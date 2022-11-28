@@ -15,8 +15,8 @@ Default background           |  Changed background
 :----------------------:|:-------------------------:
 ![Sketch](/images/m2.png)|![Sketch](/images/m3.png)
 
-</br>
+</br></br>
 
-Default background           |  Changed background
+While editing          |  Finished editing
 :----------------------:|:-------------------------:
 ![Sketch](/images/m4.png)|![Sketch](/images/m5.png)
