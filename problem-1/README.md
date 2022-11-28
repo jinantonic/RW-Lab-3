@@ -56,5 +56,3 @@ Original code for editing / deleting notes when edit / delete button is clicked 
 
 ![Sketch](/images/c6.png)
 RxJS code for editing / deleting notes when edit / delete button is clicked by using Rx.Observable.fromEvent().subscribe() function.
-
-</br></br>
