@@ -42,11 +42,6 @@ When the user enters second and minute inputs greater than 60, it will automatic
 
 </br>
 
-![Sketch](/images/over60.png)
-Converting those inputs greater than 60 to the correct format are executed by using this code above.
-
-</br>
-
 Enter time         |  Start the timer
 :----------------------:|:-------------------------:
 ![Sketch](/images/t8.png)|![Sketch](/images/t9.png)
@@ -68,8 +63,3 @@ Time's up header   |  Original header
 ![Sketch](/images/t12.png)|![Sketch](/images/t13.png)
 
 The timer will finishes at 00 and will display the message saying time's up at the header. After 2 seconds, it will change the text of h1 element back to original.
-
-</br>
-
-![Sketch](/images/header.png)
-Changing the headers are executed by using this code above.
