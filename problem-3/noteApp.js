@@ -1,125 +1,124 @@
-const add_button = document.getElementById('add_note'); // Get the element with the specified id, "add_note"
+class NoteApp {
+    constructor() {
+        this.notes = JSON.parse(localStorage.getItem("notes"));
+        this.id = 0;
+        this.NoteList = []; // List of the notes
 
-// Retrieve the data in the local storage, retrieving "notes" object here
-// It finds the data somewhere and creates the JSON value to put into const variable
-const notePads = JSON.parse(localStorage.getItem("notes")); 
-const textIdentifier = "textId"; // The normal note 
-const savedIdentifier = "savedId"; // For when the note is saved
-var num = 0;
+        if (this.notes) {
+            this.notes.forEach((note) => this.addNewNote(
+                note, // text
+                true // add to the local storage
 
+            )); // end forEach
+        } // end if
 
+        // When the button is clicked, add a new note
+        Rx.Observable.fromEvent(add_note, 'click')
+        .subscribe(() => this.addNewNote("", true, this.id++, 0)); 
+    } // end constructor
 
-// Checks to see if this variable actually contains data
-// If it does then it goes through a for loop where it will for every note and add it to whatever it's being added to
-if (notePads) { // If the notePads variable contains data
-    notePads.forEach((note) => { // For every note in the notePads variable
-        addNote(note); // Add the note to the notePads variable
-    });
-} // end if
+    addNewNote(text, colour, addToLS, id, parentId) {
+        const note = new Note(text, colour, id, parentId); // Create a new note
+        note.div.classList.add("note");
+        this.NoteList[id] = note; // Add the note to the list of notes
 
-// When the add button is clicked then call the function addNote()
-Rx.Observable.fromEvent(add_button, 'click').subscribe(() => { 
-    addNote(); 
-}); 
-
-// Function which adds notes
-function addNote(text = "") { // If the text is empty then set it to an empty string
-    const note = document.createElement("div"); // Create a div element
-    note.classList.add("note"); // Add the class "note" to the div element
-    num++; // Increment the number of notes
-    let textId = textIdentifier.concat("", num); // Create a unique id for the text area
-    let savedId = savedIdentifier.concat("", num); // Create a unique id for the saved button
-
-    note.innerHTML = `
-        <div class="notes">
-            <div class="colour_menu">
-                <select name="colours" onchange = "changeColour(this, '` + textId + `', '` + savedId + `')">
-                    <option selected="">Choose colour</option>
-                    <option id="red" value="#F7BBB5">Red</option>
-                    <option value="#F7DAB5">Orange</option>
-                    <option value="#F7F7B5">Yellow</option>
-                    <option value="#C8F7B5">Green</option>
-                    <option value="#B5E7F7">Blue</option>
-                    <option value="#E2B5F7">Purple</option>
-                </select>
-                
-                <button class = "edit"><i class="fa-sharp fa-solid fa-pen"></i></button>
-                <button class = "delete"><i class="fa-sharp fa-solid fa-trash"></i></button>
+        note.div.innerHTML = `
+            <div class="notes">
+                <div class="colour_menu">
+                    <input type="color" id="newColour">
+                    <button class="changeColour"><i class="fas fa-trash-alt"></i></button>
+                    <button class="edit"><i class="fas fa-edit"></i></button>
+                    <button class="delete"><i class="fas fa-trash-alt"></i></button>
+                    <button class="link"><i class="fas fa-edit"></i></button>
+                </div>
+                <div class="main hidden"></div>
+                <textarea></textarea>
             </div>
+        `;
 
-            <div id = '` + savedId + `' class = "main ${text ? "" : "hidden"}"></div> 
-            <textarea id = '` + textId + `' class = "${text ? "hidden" : ""}"></textarea>
-        </div>
-    `;
-    // If the text is empty then add the class "hidden" to the div element
-    // If the text is not empty then add the class "hidden" to the textarea element
+        const edit_button = note.div.querySelector(".edit");
+        const del_button = note.div.querySelector(".delete");
+        const main = note.div.querySelector(".main");
+        const textArea = note.div.querySelector("textarea");
+        const link = note.div.querySelector(".link");
+        const colourSelector = note.div.querySelector("#newColour");
 
-    const edit_button = note.querySelector(".edit"); // Get the first element with class "edit"
-    const del_button = note.querySelector(".delete");  // Get the first element with class "delete"
-    const main = note.querySelector(".main"); // Get the first element with class "main"
-    const textArea = note.querySelector("textarea"); // Get the first element with class "textarea"
+        textArea.value = text;
+        main.innerHTML = marked(text);
 
-    textArea.value = text;
-    main.innerHTML = marked(text);
+        Rx.Observable.fromEvent(edit_button, 'click').subscribe(() => {
+            main.classList.toggle("hidden");
+            textArea.classList.toggle("hidden");
+        });
 
-    Rx.Observable.fromEvent(edit_button, 'click').subscribe(() => {
-        main.classList.toggle("hidden");
-        textArea.classList.toggle("hidden");
-    });
+        // When the delete button is clicked, remove the note and update it to the local storage
+        Rx.Observable.fromEvent(del_button, 'click').subscribe(() => {
+            this.NoteList.forEach((n) => {
+                if (note.id === n.parentId) {
+                    n.div.remove();
+                }
+            });
+            note.div.remove(); // Delete all the children note including the parent note
+            this.uploadToLS(); // Update the local storage
+        });
 
-    // When the delete button is clicked, remove the note and update it to the local storage
-    Rx.Observable.fromEvent(del_button, 'click').subscribe(() => {
-        note.remove(); // Remove the note
-        uploadToLS(); // Update the local storage
-    });
+        Rx.Observable.fromEvent(link, 'click').subscribe(() => {
+            const newNote = new Note(textArea.value, note.colour, this.id++, note.id);
+            newNote.addChild();
+            this.uploadToLS();
+        });
 
-    textArea.addEventListener("input", (e) => {
-        const { value } = e.target;
-        main.innerHTML = marked(value);
-        uploadToLS();
-    });
-    // Rx.Observable.fromEvent(textArea, 'input')
-    //     .map(e => e.target)
-    //     .scan((value, target) => target, null)
-    //     .subscribe(() => {
-    //         main.innerHTML = marked(value);
-    //         uploadToLS();
-    //     });
+        Rx.Observable.fromEvent(colourSelector, 'change').subscribe(() => {
+            textArea.style.backgroundColor = colourSelector.value;
+            main.style.backgroundColor = colourSelector.value;
+            note.colour = colourSelector.value;
+        });
 
-    document.body.appendChild(note);
-} // end function addNote()
+        
+        Rx.Observable.fromEvent(textArea, 'input')
+            .map(() => textArea.value)
+            .subscribe(() => {
+                main.innerHTML = marked(textArea.value);
+                this.uploadToLS();
+        }); 
 
-// Function which saves the notes to the Local Storage
-function uploadToLS() {
-    const notesText = document.querySelectorAll("textarea");
-    const note_arr = [];
+        document.body.appendChild(note.div);
 
-    notesText.forEach((note) => {
-        note_arr.push(note.value);
-    });
+        if (addToLS) {
+            textArea.style.backgroundColor = colour;
+            main.style.backgroundColor = colour;
+            this.uploadToLS();
+        } // end if
+    } // end function addNewNote()
 
-    // Convert the JavaScript value "notes" to a JSON string and save it to the local storage
-    localStorage.setItem("notes", JSON.stringify(note_arr));
-} // end function uploadToLS()
+    // Function which saves the notes to the Local Storage
+    uploadToLS() {
+        const notesText = document.querySelectorAll("textarea");
+        const note_arr = [];
 
-// Function which lets the users to choose the background colour for the notes
-function changeColour(event, textId, savedId) {
-    var colour = event.value;
-    const b = document.getElementById(textId);
-    const c = document.getElementById(savedId);
+        notesText.forEach((note) => {
+            note_arr.push(note.value);
+        });
 
-    //console.log("First line" + b.getItem);
-    b.style.backgroundColor = colour;
-    c.style.backgroundColor = colour;
-} // end function changeColour()
-
-
+        // Convert the JavaScript value "notes" to a JSON string and save it to the local storage
+        localStorage.setItem("notes", JSON.stringify(note_arr));
+        localStorage.setItem("id", JSON.stringify(this.id));
+    } // end function uploadToLS()
+} // end class NoteApp
 
 class Note {
-    constructor(text, colour) {
+    constructor(text, colour, id, parentId) {
         this.text = text; // text of the note
         this.colour = colour; // colour of the note
+        this.div = document.createElement("div"); // div element of the note
+        this.id = id; // id of the note
+        this.parentId = parentId; // id of the parent note
     } // end constructor
+
+    addChild() {
+        n.addNewNote(this.text, this.colour, true, this.id, this.parentId);
+        this.div.backgroundColor
+    }
 
     // Function which returns the text of the note
     getText() {
@@ -132,6 +131,4 @@ class Note {
     } // end function getColour()
 } // end class Note
 
-class NoteApp {
-    
-}
+n = new NoteApp(); // Create a new note app
