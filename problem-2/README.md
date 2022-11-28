@@ -21,6 +21,7 @@ This is the overall look of the timer application.
 ![Sketch](/images/t3.png)
 If a user wants to set a timer for an hour, just simply enter 1 for the hour and click the space outside of the timer. Then it will automatically fill up the minute and second input as 0s so that they won't need to enter 0s manually. 
 
+
 </br>
 
 ![Sketch](/images/t4.png)
@@ -38,6 +39,11 @@ Enter 70 mins           |  Convert to right format
 ![Sketch](/images/t6.png)|![Sketch](/images/t7.png)
 
 When the user enters second and minute inputs greater than 60, it will automatically convert them into the right format. For example, from 70 mins to 1 hour and 10 mins. 
+
+</br>
+
+![Sketch](/images/over60.png)
+Converting those inputs greater than 60 to the correct format are executed by using this code above.
 
 </br>
 
@@ -62,3 +68,8 @@ Time's up header   |  Original header
 ![Sketch](/images/t12.png)|![Sketch](/images/t13.png)
 
 The timer will finishes at 00 and will display the message saying time's up at the header. After 2 seconds, it will change the text of h1 element back to original.
+
+</br>
+
+![Sketch](/images/header.png)
+Changing the headers are executed by using this code above.
