@@ -12,8 +12,9 @@ The overall look is identical to my previous note application since the given ta
 </br></br>
 
 While editing            |  After saved
-:---------------------:|:-------------------------:
+:----------------------:|:-------------------------:
 ![Sketch](/images/n2.png)|![Sketch](/images/n3.png)
+
 In the scenario of the user choosing the green background colour, the first image represents the state when the user is still editing and the second image represents the state after it gets saved. While editing, the user can click the pencil button at the right top corner to save it, and click that button again for going back to editing. So the pencil button works as an edit and save button. Once the note is saved, you can see that it has a bit more padding on the top.
 
 </br></br>
