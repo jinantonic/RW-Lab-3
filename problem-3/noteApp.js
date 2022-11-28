@@ -21,10 +21,10 @@ class NoteApp {
             <div class="notes">
                 <div class="colour_menu">
                     <input type="color" id="newColour">
-                    <button class="changeColour"><i class="fas fa-trash-alt"></i></button>
+                    <button hidden class="changeColour"></button>
                     <button class="edit"><i class="fas fa-edit"></i></button>
                     <button class="delete"><i class="fas fa-trash-alt"></i></button>
-                    <button class="link"><i class="fas fa-edit"></i></button>
+                    <button class="link"><i class="fa-solid fa-child"></i></button>
                 </div>
                 <div class="main hidden"></div>
                 <textarea></textarea>

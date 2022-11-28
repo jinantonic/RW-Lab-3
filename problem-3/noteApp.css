@@ -33,7 +33,7 @@ body {
     padding: 10px;
 }
 
-/* 2 icons, edit and delete */
+/* Buttons at the top bar */
 .note .colour_menu button {
     background-color: transparent;
     color: white;
@@ -74,7 +74,7 @@ body {
     border-radius: 7px;
     border: none;
     font-size: 19px;
-    height: 350px;
+    height: 340px;
     width: 95%;
     margin-left: 10px;
     padding: 20px;
