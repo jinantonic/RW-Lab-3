@@ -50,9 +50,9 @@ RxJS code for editing / deleting notes when edit / delete button is clicked by u
 </br></br>
 
 ![Sketch](/images/c5.png)
-Original code for editing / deleting notes when edit / delete button is clicked by using EventTarget.addEventListener() function.
+Original code for getting the input(change) in the text area. Get the value of the target element, convert the text to markdown and update it to the local storage by using EventTarget.addEventListener() function.
 
 </br>
 
 ![Sketch](/images/c6.png)
-RxJS code for editing / deleting notes when edit / delete button is clicked by using Rx.Observable.fromEvent().subscribe() function.
+RxJS code for getting the input(change) in the text area. Map the value of the text area by using Rx.Observable.fromEvent().map() function, and set the value of the main to the text area and upload it to the local storage by using Rx.Observable.fromEvent().subscribe() function.
