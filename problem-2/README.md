@@ -16,10 +16,18 @@ is just to get an idea of UI)
 ![Sketch](/images/t2.png)
 This is the overall look of the timer application.
 
+</br>
 
 ![Sketch](/images/t3.png)
 If a user wants to set a timer for an hour, just simply enter 1 for the hour and click the space outside of the timer. Then it will automatically fill up the minute and second input as 0s so that they won't need to enter 0s manually. 
 
+</br>
+
 ![Sketch](/images/t4.png)
 The same rule applies to the minute or second as well. 30 minutes timer, simply enter 30 to the minute space and click the space outside. Then 0s will be entered into the hour and second input fields. 
+
+</br>
+
+![Sketch](/images/t5.png)
+Also, each time input boxes have up and down arrows so that you can increment / decrement the time and the minimum value would be 0 since it wouldn't make sense to have a negative value for the time.
 
