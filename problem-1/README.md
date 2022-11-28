@@ -12,6 +12,8 @@ The overall look is identical to my previous note application since the given ta
 
 
 While editing            |  After saved
-:-----------------------:|:-------------------------:
+:----------------------:|:-------------------------:
 ![Sketch](/images/n2.png)|![Sketch](/images/n3.png)
+
+
 In the scenario of the user chosing the green background colour as green and still editing the memo. Once it's done, the user can click the pencil button at the right top corner to save it, and click that button again for editing. So the pencil button works as an edit and save button. Once the note is saved, you can see that it has a bit more padding on the top.
