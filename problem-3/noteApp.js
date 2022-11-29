@@ -59,6 +59,7 @@ class NoteApp {
                 if (note.id == n.parentId) { // If the note is a child of the note to be deleted
                     n.div.remove(); // Remove the note from the DOM
                     this.NoteList.splice(n.id, 1); // Remove the note from the list of notes
+                    this.uploadToLS(); // Upload the notes to the local storage
                 } // end if
             }); // end forEach
             this.NoteList.splice(note.id, 1); // Remove the note from the list of notes
@@ -76,6 +77,7 @@ class NoteApp {
             textArea.style.backgroundColor = colourSelector.value; // Change the background colour of the textarea
             main.style.backgroundColor = colourSelector.value; // Change the background colour of the main div
             note.colour = colourSelector.value; // Change the colour of the note
+            this.uploadToLS(); // Update the local storage
         });
 
         Rx.Observable.fromEvent(textArea, 'input') // When the textarea is changed
@@ -103,7 +105,7 @@ class NoteApp {
 
         if (this.NoteList) { // If there are notes in the list of notes
             this.NoteList.forEach((note) => { // For each note in the list of notes
-                //this.noteText = note.id + " " + note.text + " " + note.colour + " " + note.parentId; // Get the text of the note
+                console.log(note.colour);
                 note_arr.push(note); // Add the text of the note to the array of the notes
             }); // end forEach
         }
