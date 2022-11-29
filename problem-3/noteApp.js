@@ -1,14 +1,14 @@
 class NoteApp {
     constructor() {
-        this.notes = JSON.parse(localStorage.getObject("notes")); // Get the notes from the local storage
+        this.notes = JSON.parse(localStorage.getItem("notes")); // Get the notes from the local storage
         this.initialId = 0; // Initialise the id of the note as 0
         this.NoteList = []; // List of the notes
 
         console.log(typeof this.notes);
         if (this.notes) { // If there are notes in the local storage
             this.notes.forEach((note) => {
-                this.myNote = note.split(" "); // Split the note into an array
-                this.addNewNote(this.myNote[0], this.myNote[1], true, this.myNote[2]); // Add the note to the DOM
+                console.log(note.valueOf().colour);
+                this.addNewNote(note.valueOf().text, note.valueOf().colour, true, note.valueOf().parentId); // Add the note to the DOM
             }); // end forEachs
             this.notes.forEach((note) => console.log(this.note));
         } // end if
@@ -97,21 +97,21 @@ class NoteApp {
 
     // Function which saves the notes to the Local Storage
     uploadToLS() {
-        const notesText = document.querySelector("textarea"); // Get all the textareas
+        var noteText = ""; // Get all the textareas
         const note_arr = []; // Array of the notes
         const list = []; // List of the notes
 
         if (this.NoteList) { // If there are notes in the list of notes
             this.NoteList.forEach((note) => { // For each note in the list of notes
-                var noteText = note.id + " " + note.text + " " + note.colour + " " + note.parentId; // Get the text of the note
-                note_arr.push(noteText); // Add the text of the note to the array of the notes
+                //this.noteText = note.id + " " + note.text + " " + note.colour + " " + note.parentId; // Get the text of the note
+                note_arr.push(note); // Add the text of the note to the array of the notes
             }); // end forEach
         }
         // notesText.forEach((note) => { // For each textarea
         //     note_arr.push(note.value); // Add the value of the textarea to the array of the notes
         // }); // end forEach
 
-        localStorage.setObject("notes", note_arr); // Convert the JavaScript value "notes" to a JSON string and save it to the local storage
+        localStorage.setItem("notes", JSON.stringify(note_arr)); // Convert the JavaScript value "notes" to a JSON string and save it to the local storage
         // localStorage.setItem("id", JSON.stringify(note_id)); 
         // localStorage.setItem("id", JSON.stringify(note_pd)); // Convert the JavaScript value "pid" to a JSON string and save it to the local storage
         // localStorage.setItem("colour", JSON.stringify(note_c)); // Convert the JavaScript value "colour" to a JSON string and save it to the local storage
