@@ -5,7 +5,9 @@ const add_button = document.getElementById('add_note'); // Get the element with 
 const notePads = JSON.parse(localStorage.getItem("notes")); 
 const textIdentifier = "textId"; // The normal note 
 const savedIdentifier = "savedId"; // For when the note is saved
-var num = 0; // Set the number of notes to 0
+var num = 0;
+
+// localStorage.clear(); // Clear the local storage
 
 // Checks to see if this variable actually contains data
 if (notePads) { // If it does then 
@@ -43,7 +45,6 @@ function addNote(text = "") {
                 <button class = "edit"><i class="fa-sharp fa-solid fa-pen"></i></button>
                 <button class = "delete"><i class="fa-sharp fa-solid fa-trash"></i></button>
             </div>
-
             <div id = '` + savedId + `' class = "main ${text ? "" : "hidden"}"></div>
             <textarea id = '` + textId + `' class = "${text ? "hidden" : ""}"></textarea>
         </div>
