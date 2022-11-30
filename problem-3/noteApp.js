@@ -2,19 +2,20 @@ class NoteApp {
     constructor() {
         this.notes = JSON.parse(localStorage.getItem("notes")); // Get the notes from the local storage
         this.initialId = 0; // Initialise the id of the note as 0
-        this.NoteList = []; // List of the notes
+        this.NoteList = []; // Initialise the list of notes as an empty array
 
         if (this.notes) { // If there are notes in the local storage
             this.notes.forEach((note) => {
-                this.addNewNote(note.valueOf().text, note.valueOf().colour, true, note.valueOf().parentId); // Add the note to the DOM
+                this.addNewNote(note.valueOf().text, note.valueOf().colour, true, note.valueOf().parentId); // Add the note to the list of notes
             }); // end forEach
         } // end if
 
-        // Add a new note when the add note button is clicked
+        // Add a new note when the add note button is clicked, default background colour is beige
         Rx.Observable.fromEvent(add_note, 'click').subscribe(() => this.addNewNote("", "beige", true, 0)); 
     } // end constructor
 
-    addNewNote(text, colour, addToLS, parentId) { // Function which adds a new note
+    // Function which adds a new note to the list of notes
+    addNewNote(text, colour, addToLS, parentId) { 
         this.initialId++; // Increment the id of the note
         const note = new Note(text, colour, this.initialId, parentId); // Create a new note
         
@@ -27,7 +28,7 @@ class NoteApp {
                     <input type="color" id="newColour">
                     <button class="edit"><i class="fas fa-edit"></i></button>
                     <button class="delete"><i class="fas fa-trash-alt"></i></button>
-                    <button class="link"><i class="fa-solid fa-child"></i></button>
+                    <button class="child"><i class="fa-solid fa-child"></i></button>
                 </div>
                 <div class="main hidden"></div>
                 <textarea></textarea>
@@ -37,22 +38,22 @@ class NoteApp {
         const edit_button = note.div.querySelector(".edit"); // Get the edit button
         const del_button = note.div.querySelector(".delete"); // Get the delete button
         const main = note.div.querySelector(".main"); // Get the main div
-        const textArea = note.div.querySelector("textarea"); // Get the textarea
-        const link = note.div.querySelector(".link"); // Get the link button
+        const textArea = note.div.querySelector("textarea"); // Get the text area
+        const child = note.div.querySelector(".child"); // Get the child button
         const colourSelector = note.div.querySelector("#newColour"); // Get the colour selector
 
-        textArea.value = text; // Set the value of the textarea to the text of the note
-        main.innerHTML = marked(note.text); // Set the value of the main div to the text of the note
+        textArea.value = text; // Set the value of the text area to the text of the note
+        main.innerHTML = marked(note.text); // Set the inner HTML of the main div to the text of the note
 
         Rx.Observable.fromEvent(edit_button, 'click').subscribe(() => { // When the edit button is clicked
             main.classList.toggle("hidden"); // Toggle the class "hidden" of the main div
-            textArea.classList.toggle("hidden"); // Toggle the class "hidden" of the textarea
-            note.text = this.textArea; // Set the text of the note to the value of the textarea
+            textArea.classList.toggle("hidden"); // Toggle the class "hidden" of the text area
+            note.text = this.textArea; // Set the text of the note to the text of the text area
         });
 
         Rx.Observable.fromEvent(del_button, 'click').subscribe(() => { // When the delete button is clicked
             this.NoteList.forEach((n) => { // For each note in the list of notes
-                if (note.id == n.parentId) { // If the note is a child of the note to be deleted
+                if (note.id == n.parentId) { // If the note is a child of the note
                     n.div.remove(); // Remove the note from the DOM
                     this.NoteList.splice(n.id, 1); // Remove the note from the list of notes
                     this.uploadToLS(); // Upload the notes to the local storage
@@ -60,11 +61,11 @@ class NoteApp {
             }); // end forEach
 
             this.NoteList.splice(note.id, 1); // Remove the note from the list of notes
-            note.div.remove(); // Delete all the children note including the parent note
-            this.uploadToLS(); // Update the local storage
+            note.div.remove(); // Remove the note from the DOM
+            this.uploadToLS();
         });
 
-        Rx.Observable.fromEvent(link, 'click').subscribe(() => { // When the link button is clicked
+        Rx.Observable.fromEvent(child, 'click').subscribe(() => { // When the child button is clicked
             const newNote = new Note(textArea.value, note.colour, this.initialId, note.id); // Create a new note
             newNote.addChild(); // Add the new note as a child of the parent note
             this.uploadToLS(); // Update the local storage
@@ -96,24 +97,16 @@ class NoteApp {
 
     // Function which saves the notes to the Local Storage
     uploadToLS() {
-        //var noteText = ""; // Get all the textareas
         const note_arr = []; // Array of the notes
-        //const list = []; // List of the notes
 
         if (this.NoteList) { // If there are notes in the list of notes
             this.NoteList.forEach((note) => { // For each note in the list of notes
-                console.log(note.colour);
                 note_arr.push(note); // Add the text of the note to the array of the notes
             }); // end forEach
         }
-        // notesText.forEach((note) => { // For each textarea
-        //     note_arr.push(note.value); // Add the value of the textarea to the array of the notes
-        // }); // end forEach
 
-        localStorage.setItem("notes", JSON.stringify(note_arr)); // Convert the JavaScript value "notes" to a JSON string and save it to the local storage
-        // localStorage.setItem("id", JSON.stringify(note_id)); 
-        // localStorage.setItem("id", JSON.stringify(note_pd)); // Convert the JavaScript value "pid" to a JSON string and save it to the local storage
-        // localStorage.setItem("colour", JSON.stringify(note_c)); // Convert the JavaScript value "colour" to a JSON string and save it to the local storage
+        // Convert the JavaScript value "notes" to a JSON string and save it to the local storage
+        localStorage.setItem("notes", JSON.stringify(note_arr)); 
     } // end function uploadToLS()
 } // end class NoteApp
 
