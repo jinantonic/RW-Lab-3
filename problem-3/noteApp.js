@@ -1,3 +1,5 @@
+//localStorage.clear();
+
 class NoteApp { 
     constructor() {
         this.notes = JSON.parse(localStorage.getItem("notes")); // Get the notes from the local storage
