@@ -26,6 +26,7 @@ Rx.Observable.fromEvent(minInput, 'change').subscribe(() => { // Subscribe to th
         hr = Math.floor(hr + min / 60); // Add the number of hours to the hour input
         min = min % 60; // Set the minute input to the remainder of the minutes
     } // end if
+
     updateTime();
 })
 
@@ -40,6 +41,7 @@ Rx.Observable.fromEvent(secInput, 'change').subscribe(() => { // Subscribe to th
             min = min % 60; // Set the minute input to the remainder of the minutes
         } // end inner if
     } // end if
+
     updateTime();
 })
 
@@ -84,6 +86,7 @@ const startTime = () => {
     hrInput.setAttribute('disabled', true); // Disable the hour input
     minInput.setAttribute('disabled', true); // Disable the minute input
     secInput.setAttribute('disabled', true); // Disable the second input
+
     startCount();
 } // end startTime
 
@@ -104,6 +107,7 @@ const resetTime = () => {
     hrInput.removeAttribute('disabled'); // Remove the disabled attribute from the hour input
     minInput.removeAttribute('disabled'); // Remove the disabled attribute from the minute input
     secInput.removeAttribute('disabled'); // Remove the disabled attribute from the second input
+    
     hrInput.value = ""; // Set the value of the hour input to an empty string
     minInput.value = ""; // Set the value of the minute input to an empty string
     secInput.value = ""; // Set the value of the second input to an empty string
