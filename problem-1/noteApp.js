@@ -7,7 +7,7 @@ const textIdentifier = "textId"; // The normal note
 const savedIdentifier = "savedId"; // For when the note is saved
 var num = 0;
 
-localStorage.clear(); // Clear the local storage
+localStorage.clear(); // Clear the local storage just in case if there is any saved data in it
 
 // Checks to see if this variable actually contains data
 if (notePads) { // If it does then 
