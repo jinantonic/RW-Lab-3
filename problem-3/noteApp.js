@@ -68,14 +68,14 @@ class NoteApp {
         Rx.Observable.fromEvent(child, 'click').subscribe(() => { // When the child button is clicked
             const newNote = new Note(textArea.value, note.colour, this.initialId, note.id); // Create a new note
             newNote.addChild(); // Add the new note as a child of the parent note
-            this.uploadToLS(); // Update the local storage
+            this.uploadToLS();
         });
 
         Rx.Observable.fromEvent(colourSelector, 'change').subscribe(() => { // When the colour selector is changed
             textArea.style.backgroundColor = colourSelector.value; // Change the background colour of the textarea
             main.style.backgroundColor = colourSelector.value; // Change the background colour of the main div
             note.colour = colourSelector.value; // Change the colour of the note
-            this.uploadToLS(); // Update the local storage
+            this.uploadToLS();
         });
 
         Rx.Observable.fromEvent(textArea, 'input') // When the textarea is changed
@@ -83,7 +83,7 @@ class NoteApp {
             .subscribe(() => { // Subscribe to the event
                 main.innerHTML = marked(textArea.value); // Set the value of the main div to the text of the note
                 note.text = textArea.value; // Set the text of the note to the value of the textarea
-                this.uploadToLS(); // Update the local storage
+                this.uploadToLS(); 
             }); 
 
         document.body.appendChild(note.div); // Add the note to the DOM
@@ -91,7 +91,7 @@ class NoteApp {
         if (addToLS) { // If the note is to be added to the local storage
             textArea.style.backgroundColor = colour; // Change the background colour of the textarea
             main.style.backgroundColor = colour; // Change the background colour of the main div
-            this.uploadToLS(); // Update the local storage
+            this.uploadToLS();
         } // end if
     } // end function addNewNote()
 
@@ -136,7 +136,7 @@ class Note {
         return this.id;
     } // end function getId()
 
-    getColour() { 
+    getColour() { // Function which returns the colour of the note
         return this.colour;
     } // end function getColour()
 } // end class Note
