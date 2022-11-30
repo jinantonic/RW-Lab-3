@@ -1,16 +1,13 @@
-class NoteApp {
+class NoteApp { 
     constructor() {
         this.notes = JSON.parse(localStorage.getItem("notes")); // Get the notes from the local storage
         this.initialId = 0; // Initialise the id of the note as 0
         this.NoteList = []; // List of the notes
 
-        console.log(typeof this.notes);
         if (this.notes) { // If there are notes in the local storage
             this.notes.forEach((note) => {
-                console.log(note.valueOf().colour);
                 this.addNewNote(note.valueOf().text, note.valueOf().colour, true, note.valueOf().parentId); // Add the note to the DOM
-            }); // end forEachs
-            this.notes.forEach((note) => console.log(this.note));
+            }); // end forEach
         } // end if
 
         // Add a new note when the add note button is clicked
@@ -55,13 +52,13 @@ class NoteApp {
 
         Rx.Observable.fromEvent(del_button, 'click').subscribe(() => { // When the delete button is clicked
             this.NoteList.forEach((n) => { // For each note in the list of notes
-                console.log(n);
                 if (note.id == n.parentId) { // If the note is a child of the note to be deleted
                     n.div.remove(); // Remove the note from the DOM
                     this.NoteList.splice(n.id, 1); // Remove the note from the list of notes
                     this.uploadToLS(); // Upload the notes to the local storage
                 } // end if
             }); // end forEach
+
             this.NoteList.splice(note.id, 1); // Remove the note from the list of notes
             note.div.remove(); // Delete all the children note including the parent note
             this.uploadToLS(); // Update the local storage
@@ -99,9 +96,9 @@ class NoteApp {
 
     // Function which saves the notes to the Local Storage
     uploadToLS() {
-        var noteText = ""; // Get all the textareas
+        //var noteText = ""; // Get all the textareas
         const note_arr = []; // Array of the notes
-        const list = []; // List of the notes
+        //const list = []; // List of the notes
 
         if (this.NoteList) { // If there are notes in the list of notes
             this.NoteList.forEach((note) => { // For each note in the list of notes
@@ -120,31 +117,23 @@ class NoteApp {
     } // end function uploadToLS()
 } // end class NoteApp
 
-Storage.prototype.setObject = function(key, value) {
-    this.setItem(key, JSON.stringify(value));
-}
-
-Storage.prototype.getObject = function(key) {
-    var value = this.getItem(key);
-    return value && JSON.parse(value);
-}
-
 class Note {    
     constructor(text, colour, id, parentId) {
         this.colour = colour; // colour of the note
         this.div = document.createElement("div"); // div element of the note
         this.id = id; // id of the note
         this.parentId = parentId; // id of the parent note
-        if (text == null) {
-            this.text = "";
+
+        if (text == null) { // If the text of the note is null
+            this.text = ""; // Set the text of the note to an empty string
         } else {
-            this.text = text;
+            this.text = text; // Set the text of the note to the text of the note
         } // end if else
     } // end constructor
 
     addChild() { // Function which adds a child note
         n.addNewNote(this.text, this.colour, true, this.parentId); 
-    }
+    } // end function addChild()
 
     getText() { // Function which returns the text of the note
         return this.text;

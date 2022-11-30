@@ -5,7 +5,7 @@ const add_button = document.getElementById('add_note'); // Get the element with 
 const notePads = JSON.parse(localStorage.getItem("notes")); 
 const textIdentifier = "textId"; // The normal note 
 const savedIdentifier = "savedId"; // For when the note is saved
-var num = 0;
+var num = 0; // Set the number of notes to 0
 
 // Checks to see if this variable actually contains data
 if (notePads) { // If it does then 
