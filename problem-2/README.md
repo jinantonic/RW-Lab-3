@@ -24,7 +24,7 @@ If a user wants to set a timer for an hour, just simply enter 1 for the hour and
 </br>
 
 ![Sketch](/images/t4.png)
-The same rule applies to the minute or second as well. 30 minutes timer, simply enter 30 to the minute space and click the space outside. Then 0s will be entered into the hour and second input fields. 
+The same rule applies to the minute or second as well. If you want a 30 minutes timer, simply enter 30 to the minute space and click the space outside. Then 0s will be entered into the hour and second input fields. 
 
 </br>
 
