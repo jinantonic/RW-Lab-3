@@ -30,9 +30,9 @@ Once the child button is clicked, it creates a new child note which is identical
 </br></br>
 
 ![Sketch](/images/m7.png)
-For example, let's say I created BLUE, PURPLE and GREEN notes and thier children. 
+For example, let's say I created BLUE, PURPLE and GREEN notes and their children. 
 
 </br></br>
 
 ![Sketch](/images/m8.png)
-When I click the delete button on the parent BLUE note, you can see it deletes it's child BLUE note as well. When the delete button on the children BLUE note is clicked, it only deletes itself but the parent BLUE note.
+When I click the delete button on the parent BLUE note, you can see it deletes its child BLUE note as well. When the delete button on the child BLUE note is clicked, it only deletes itself not the parent BLUE note.
