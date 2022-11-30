@@ -26,3 +26,13 @@ While editing          |  After saved
 
 ![Sketch](/images/m6.png)
 Once the child button is clicked, it creates a new child note which is identical to the parent note. It is possible to edit, delete and change the background of each note separately, however, all of the child notes will be deleted if the parent note is removed. 
+
+</br></br>
+
+![Sketch](/images/m7.png)
+For example, let's say I created BLUE, PURPLE and GREEN notes and thier children. 
+
+</br></br>
+
+![Sketch](/images/m8.png)
+When I click the delete button on the parent BLUE note, you can see it deletes it's child BLUE note as well. When the delete button on the children BLUE note is clicked, it only deletes itself but the parent BLUE note.
