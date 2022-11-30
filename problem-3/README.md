@@ -35,4 +35,4 @@ For example, let's say I created BLUE, PURPLE and GREEN notes and their children
 </br></br>
 
 ![Sketch](/images/m8.png)
-When I click the delete button on the parent BLUE note, you can see it deletes its child BLUE note as well. When the delete button on the child BLUE note is clicked, it only deletes itself not the parent BLUE note. The same rule applies to PURLE and GREEN notes as well.
+When I click the delete button on the BLUE parent note, you can see it deletes its BLUE child note as well. When the delete button on the BLUE child note is clicked, it only deletes itself not the BLUE parent note. The same rule applies to PURLE and GREEN notes as well.
